@@ -1,0 +1,7 @@
+<option option="address">
+Includes the machine-code address, in addition to the
+source-file name and line numbers, in all output that refers to
+some part of the target program. By default the machine-code
+address is shown only if no source-line numbers are known for
+this program part.
+</option>

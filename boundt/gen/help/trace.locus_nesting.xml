@@ -1,0 +1,5 @@
+<option option="trace locus_nesting">
+Nesting and unnesting the program locus as the
+analysis traverses nested program structures and
+calls.
+</option>

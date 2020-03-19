@@ -1,0 +1,4 @@
+<option option="warn computed_return">
+A call where the return address is computed dynamically and
+thus must be resolved by analysis.
+</option>

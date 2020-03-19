@@ -1,0 +1,3 @@
+<option option="write_ws">
+The number of wait-states assumed for writing external memory. 
+</option>

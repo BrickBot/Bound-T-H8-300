@@ -1,0 +1,6 @@
+<option-value option="mark_relation" value="contains">
+The program part contains the line holding the marker, corresponding
+to an assertion of the form "&lt;part&gt; that contains &lt;marker&gt;". In
+other words, some instruction in the program part is connected to the
+source-line number of the marker.
+</option-value>

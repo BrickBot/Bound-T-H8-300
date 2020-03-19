@@ -1,0 +1,45 @@
+Changes to lp_solve by Tidorum Ltd for use with Bound-T
+
+
+CVS tags are constructed as follows: L<lp_solve vs>T<tidorum vs>.
+For example, L3T1 means lp_solve version 3(.0); Tidorum version 1.
+
+2014-07-21; CVS tag L3T3
+   Changes for Mac OS/X, 64-bit host, with Clang:
+   - In lpglob.h, changed the type of yyleng from "int" to YYLENG_T,
+     because (some) 64-bit systems use "size_t", others still use "int".
+   - In Makefile.macosx, changed LEXLIB to use the OS/X-provided "libl"
+     instead of the more common "libfl" which is not available on OS/X,
+     and to define YYLENG_T=size_t. Also hanged the C compiler options
+     to check for the C99 standard instead of the ANSI standard, to
+     avoid heaps of warnings for the use of PRIuMAX in some formats
+     (change introduced in tag L3T2).
+   - In Makefile.linux, changed the C compiler options to use C99, and
+     to define YYLENG_T=int.
+
+2013-12-07; CVS tag L3T2
+   To make the MALLOC macros (in lpkit.h) compile without warnings on
+   64-bit systems, changed their printf formats to use the C90/99
+   format code PRIuMAX with the argument (the allocation size)
+   converted to uintmax_t, There should be no change in function
+   for little-endian (Intel) hosts with allocation sizes no
+   greater than 4 GB.
+
+2008-05-28; CVS tag L3T1
+   Further modification to lpkit.c by Tidorum for use with Bound-T:
+   Increased the number of digits in the print-out of the variable
+   values (execution counts, for Bound-T), so that even large
+   values are printed as integers.
+
+2002-12-23
+   Modification to lpkit.c by SSF for use with Bound-T:
+   Increased the number of digits in the print-out of the objective
+   function value, in print_solution(), so that even large values
+   are printed as integers.
+
+2002-12-23
+   Starting from lp_solve 3.0.
+
+--
+By Niklas Holsti, Tidorum Ltd.
+$Id: tidorum-changes.txt,v 1.4 2014/07/21 15:48:36 niklas Exp $

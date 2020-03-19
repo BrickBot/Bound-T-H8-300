@@ -1,0 +1,5 @@
+<option option="synonym">
+Lists all synonyms for all identified subprograms in the
+program, at the end of the analysis. A synonym is another identifier
+(subprogram or label name) that is connected to the same code address.
+</option>

@@ -1,0 +1,4 @@
+<option-value option="device" value="3292">
+The H8/3292 device.
+Same as <option-value-ref option="device" value="lego"/>.
+</option-value>

@@ -1,0 +1,4 @@
+<option option="prune">
+Enables the pruning of dead (unreachable) parts
+from control-flow graphs. Pruning is usually good.
+</option>

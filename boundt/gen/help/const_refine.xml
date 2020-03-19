@@ -1,0 +1,4 @@
+<option option="const_refine">
+Controls how the results of the constant-propagation phase
+are used to refine (simplify) the code under analysis.
+</option>

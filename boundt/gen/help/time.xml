@@ -1,0 +1,6 @@
+<option option="time">
+Whether to analyse the worst-case execution time (for each subprogram
+given in the arguments). Time analysis can be disabled if only the
+stack usage analysis (<option-ref option="stack"/>) is desired,
+for example.
+</option>

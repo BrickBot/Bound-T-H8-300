@@ -1,0 +1,4 @@
+<option-value option="format" value="srec">
+The S-Record format defined by Motorola. This is open
+format is supported by all versions of Bound-T/H8-300.
+</option-value>

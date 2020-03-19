@@ -1,0 +1,6 @@
+<option-value option="loop" value="first">
+As <option-value-ref option="loop" value="full"/>,
+but stops when the first loop-bound is found.
+Does not try to find stronger bounds using other
+variables or procedures.
+</option-value>

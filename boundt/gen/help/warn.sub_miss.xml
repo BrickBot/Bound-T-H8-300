@@ -1,0 +1,4 @@
+<option option="warn sub_miss">
+Assertions on a subprogram that is not present in
+the program under analysis.
+</option>

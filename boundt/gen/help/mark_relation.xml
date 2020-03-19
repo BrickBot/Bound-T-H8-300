@@ -1,0 +1,6 @@
+<option option="mark_relation">
+The positional relationship to be assumed for a source-code marker and
+the marked program part, when the assertion identifies the part (only)
+as being 'marked' by this marker, and not by a more specific
+relationship.
+</option>

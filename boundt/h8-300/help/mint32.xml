@@ -1,0 +1,4 @@
+<option option="mint16">
+Assume "int" variables are 32 bits in size, for" COFF target
+programs compiled with GCC.
+</option>

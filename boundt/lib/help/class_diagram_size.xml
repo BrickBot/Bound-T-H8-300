@@ -1,0 +1,6 @@
+<option option="class_diagram_size">
+The size of the class-diagram drawing from an UBROF
+executable file, when the option <option-ref option="draw_classes"/>
+is active. The format is that of the DOT "size" value: the width in
+inches, a comma, and the height in inches.
+</option>

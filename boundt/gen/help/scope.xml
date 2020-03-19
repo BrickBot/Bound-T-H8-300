@@ -1,0 +1,6 @@
+<option option="scope">
+Qualifies subprogram names with the scope in all output, thus
+disambiguating subprograms with the same names but different
+scopes. Implies the option
+<prefixed-option-ref prefix="draw" option="scope"/>.
+</option>

@@ -1,0 +1,5 @@
+<option-value option="stack_area" value="internal">
+The stack (SP = R7) is in internal (on-chip) RAM.
+Stack accesses are fast.
+Overridden by <option-value-ref option="internal_ram" value="disabled"/>.
+</option-value>

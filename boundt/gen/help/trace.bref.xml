@@ -1,0 +1,4 @@
+<option option="trace bref">
+As  <prefixed-option-ref prefix="trace" option="effect"/> but
+each assignment in the effect is shown on its own line.
+</option>

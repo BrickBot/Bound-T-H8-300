@@ -1,0 +1,5 @@
+<option-value option="mark_relation" value="on">
+The marker is placed on the program part itself, within plus or minus
+<option-ref option="line_fuzz"/> lines, corresponding to an
+assertion of the form "&lt;part&gt; that is on &lt;marker&gt;".
+</option-value>

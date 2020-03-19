@@ -1,0 +1,4 @@
+<option-value option="loop" value="each">
+Analyse each potential counter (induction variable) separately.
+No joint analysis.
+</option-value>

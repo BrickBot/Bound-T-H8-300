@@ -1,0 +1,10 @@
+<option option="calc_join_steps">
+During arithmetic analysis, the computations represented in the
+flow-graph elements (steps) are translated to Presburger relations.
+This option determines whether the translation joins consecutive
+steps from one basic block into a joint data-flow-relation (joint
+arithmetic effect) which covers as many steps as possible (before some
+storage cell is reassigned a second new value). The aim is to
+simplify the Presburger expression of the data-flow by reducing the
+number of "copy" constraints and the number of joined relations.
+</option>

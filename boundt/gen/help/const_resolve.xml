@@ -1,0 +1,5 @@
+<option option="const_resolve">
+Selects the aspects of the program model that Bound-T should
+deduce from the results of the constant-propagation analysis,
+if possible.
+</option>

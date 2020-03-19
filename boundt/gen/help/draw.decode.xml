@@ -1,0 +1,4 @@
+<option option="draw decode">
+Show the decoded (disassembled) instructions, in the text
+label of each node (basic block or step).
+</option>

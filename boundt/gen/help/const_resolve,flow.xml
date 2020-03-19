@@ -1,0 +1,4 @@
+<option-value option="const_resolve" value="flow">
+Targets of dynamic transfer-of-control instructions such
+as a jump to a dynamically computed address.
+</option-value>

@@ -1,0 +1,5 @@
+<option-value option="mark_relation" value="exactly_on">
+The marker is placed exactly on the program part itself, with no fuzz
+(difference) allowed in the source-line number, corresponding to an
+assertion of the form "&lt;part&gt; that is exactly on &lt;marker&gt;".
+</option-value>

@@ -1,0 +1,4 @@
+<option option="imp dealloc">
+Whether to deallocate heap memory blocks that have been allocated
+dynamically but are no longer needed.
+</option>

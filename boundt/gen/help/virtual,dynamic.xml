@@ -1,0 +1,6 @@
+<option-value option="virtual" value="dynamic">
+A virtual function call is modelled as a dynamic call
+that can be resolved to some set of implementations,
+depending on the dynamic context, or can be resolved by
+an assertion.
+</option-value>

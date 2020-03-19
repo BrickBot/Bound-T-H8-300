@@ -1,0 +1,5 @@
+<option option="tail_calls">
+Whether to detect, and model as calls, "tail calls" that have
+been optimized into some non-call instruction, typically a
+plain jump to the callee. 
+</option>

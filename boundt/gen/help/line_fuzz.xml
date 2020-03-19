@@ -1,0 +1,6 @@
+<option option="line_fuzz">
+Defines the largest amount by which the actual source-code line-number
+for some part of the target program can differ from the line-number
+defined in an assertion, while still letting the part match the
+assertion.
+</option>

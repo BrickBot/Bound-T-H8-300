@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+#  run_lp_solve: Run lp_solve, capturing input and output into log-files.
+#
+# A component of the Bound-T Worst-Case Execution Time Tool.
+# Copyright (c) 2004 Tidorum Ltd.
+# 
+# $RCSfile: run_lp_solve,v $
+# $Revision: 1.1 $
+# $Date: 2004-05-15 13:37:36 $
+# $Name:  $
+# 
+# $Log: run_lp_solve,v $
+# Revision 1.1  2004-05-15 13:37:36  niklas
+# First Tidorum version.
+#
+
+
+if [ "$#" = "2" ]; then
+
+   tee $1 | lp_solve | tee $2
+
+else
+
+   lp_solve
+
+fi

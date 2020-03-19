@@ -1,0 +1,4 @@
+<option option="draw total">
+Draw a flow-graph that shows the total execution counts and times
+for the subprogram, within the execution bounds of the root subprogram.
+</option>

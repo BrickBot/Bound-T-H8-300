@@ -1,0 +1,4 @@
+<option option="draw address">
+Show [first,last] code address of each node (basic block or step),
+in the node's text label.
+</option>

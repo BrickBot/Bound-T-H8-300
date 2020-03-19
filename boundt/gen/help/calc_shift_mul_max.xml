@@ -1,0 +1,8 @@
+<option option="calc_shift_mul_max">
+Specifies the maximum amount (bit positions) of left-shift
+which the arithmetic analysis can model as a multiplication
+by 2**shift. For larger shifts the result is opaque.
+Note that when this option is set to <i>M</i> bits, say, the
+option <option-ref option="calc_max"/> is automatically  increased
+to at least 2**M.
+</option>

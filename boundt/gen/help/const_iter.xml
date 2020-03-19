@@ -1,0 +1,4 @@
+<option option="const_iter">
+Sets the maximum number of iterations of constant-propagation
+alternated with resolution of dynamic data accesses.
+</option>

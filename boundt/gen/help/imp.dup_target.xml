@@ -1,0 +1,5 @@
+<option option="imp dup_target">
+Whether to check that the computational model for an
+instruction (a flow-graph step) has at most one
+assignment to any target cell.
+</option>

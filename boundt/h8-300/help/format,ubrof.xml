@@ -1,0 +1,7 @@
+<option-value option="format" value="ubrof">
+The UBROF (Universal Binary Relocatable Object Format) defined by
+IAR Systems for their compilers. This format is not supported by the
+open-source versions of Bound-T, because the definition of UBROF is
+proprietary and the Bound-T module reading UBROF was created by
+Tidorum under an NDA (Non-Disclosure Agreement) with IAR Systems.
+</option-value>

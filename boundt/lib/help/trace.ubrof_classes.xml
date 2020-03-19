@@ -1,0 +1,5 @@
+<option option="trace ubrof_classes">
+The classes (in the C++ sense) and their hierarchical
+relationships (base class, derived class) defined in
+the UBROF executable file under analysis.
+</option>

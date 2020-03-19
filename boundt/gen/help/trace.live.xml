@@ -1,0 +1,4 @@
+<option option="trace live">
+The "live" assignments in each flow-graph node (basic block)
+as found by the "live variable" analysis.
+</option>

@@ -1,0 +1,4 @@
+<option option="lines">
+Selects how target code addresses are connected to source-line numbers
+for display purposes. 
+</option>

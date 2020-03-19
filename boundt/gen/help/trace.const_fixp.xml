@@ -1,0 +1,4 @@
+<option option="trace const_fixp">
+The iterations of constant propagation until the 
+end result (fixed point) is reached.
+</option>

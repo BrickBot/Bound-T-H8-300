@@ -1,0 +1,9 @@
+<option option="draw step">
+Show the "step-address" of each node. This is the unique identifier of
+the node in terms of the target processor's state when the node is
+entered at execution. The machine address of the first instruction of
+the node (the Program Counter) is usually the main part of the
+step-address, but the step-address often includes other state
+components, too. This option is often used together with the
+option <prefixed-option-ref prefix="draw" option="step_graph"/>.
+</option>

@@ -1,0 +1,7 @@
+<option option="dot_page">
+Divides the drawings (see the <option-ref option="dot"/> option) into
+pages of the given size, for example -dot_page=a4. The value of the
+option is the DOT page-size string. By default the drawings are
+unpaged and the drawing scale is reduced to fit each drawing in one
+physical page.
+</option>

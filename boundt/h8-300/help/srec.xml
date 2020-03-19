@@ -1,0 +1,10 @@
+<option option="srec">
+Loads more code and/or data in S-record form from
+the named file, adding to the code and data read
+from the main executable file (as named on the
+command-line after the options).
+
+Multiple S-record files can be specified by giving as many
+<option-ref option="srec"/> options. The files are read in the
+order listed.
+</option>

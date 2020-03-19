@@ -1,0 +1,4 @@
+<option option="warn">
+A collection of Boolean options that control the emission of specific types of
+warning messages.
+</option>

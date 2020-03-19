@@ -1,0 +1,4 @@
+<option option="anatime">
+Shows the analysis time (wall-clock time) in seconds.<br/>
+See also <option-ref option="max_anatime"/>.
+</option>

@@ -1,0 +1,12 @@
+<option option="max_stack">
+An upper limit on the absolute value of credible or useful
+stack-height bounds.
+Sometimes Bound-T computes bounds on the stack height that are far
+wider than the true bounds. For example, if the stack pointer is
+32 bits, Bound-T sometimes finds stack-height bounds on the order
+of 2^31 or 2^32. If <option-ref option="max_stack"/> is set to a
+finite value, Bound-T ignores any computed upper or lower bound on
+stack-height with a larger absolute value, and (if possible) looks
+for sharper stack-height bounds by context-specific analysis.
+The default value of this option depends on the target processor.
+</option>

@@ -1,0 +1,64 @@
+<option option="The command-line help system">
+<p>The command-line argument "-help" makes Bound-T display descriptions of
+the general usage and command-line syntax of Bound-T, or descriptions
+of specific options or option values.</p>
+<p>The "-help" argument can stand alone, as the only argument on the
+Bound-T command line, or it can be followed by one or two further
+arguments, in any of the following forms:
+</p>
+<p><dl>
+<dt>-help</dt>
+<dd>Describes the general usage and command-line syntax of Bound-T.</dd>
+<dt>-help options</dt>
+<dd>Describes the general forms of command-line options for Bound-T.</dd>
+<dt>-help all</dt>
+<dd>Lists and describes all command-line options for Bound-T.<br/>
+    The display of device-specific or compiler-specific options
+    may depend on earlier command-line arguments (more on this
+    below).</dd>
+<dt>-help help</dt>
+<dd>Describes the usage of the -help argument (this text).</dd>
+<dt>-help &lt;option&gt;</dt>
+<dd>Describes the option named by the argument after -help.<br/>
+    For example, "-help assert" describes the <option-ref option="assert"/>
+    option.</dd>
+<dt>-help &lt;option&gt; &lt;value&gt;</dt>
+<dd>Describes the named value of the named option.<br/>
+    For example, "-help loop each" describes the option
+    "<option-value-ref option="loop"
+    value="each"/>".</dd>
+<dt>-help &lt;prefix&gt; &lt;item&gt;</dt>
+<dd>Describes the option consisting of the given prefix
+(which must be one of 
+<option-ref option="draw"/>,
+<option-ref option="imp"/>,
+<option-ref option="trace"/>, or
+<option-ref option="warn"/>, with or without the leading hyphen)
+followed by the given item.<br/>
+For example, "-help draw decode" describes the
+option <prefixed-option-ref prefix="draw" option="decode"/>.</dd>
+<dt>-help groups</dt>
+<dd>Lists and briefly describes all option groups.</dd>
+<dt>-help group &lt;group&gt;</dt>
+<dd>Describes the named option group and all options that
+are members of this group. For example, "-help group inputs"
+describes options related to Bound-T inputs. An option may belong
+to several groups. The keyword "group" may be omitted if there
+is no option with the same name as the option group.</dd>
+</dl>
+</p>
+<p>For some versions of Bound-T, the options that are available depend on the
+choice of the target device, the cross-compiler, or other selections. For help
+on those options, write the arguments that select the target device et cetera
+on the command-line before the "-help" argument. For example, the command-line
+</p>
+<pre><nbsp/><nbsp/><nbsp/>boundt_8051 -compiler=iar -help all</pre>
+<p>will show (also) the options specific to the IAR cross-compiler for
+the Intel-8051 target.
+</p>
+<p>
+Bound-T searches for help files in the directory tree named by the
+environment variable BOUNDT_HELP. Further help-file directories
+can be added with the option <option-ref option="help_dir"/>.
+</p>
+</option>

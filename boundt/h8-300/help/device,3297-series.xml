@@ -1,0 +1,11 @@
+<option-value option="device" value="3297-series">
+The devices in the "H8/3297" series, which are:<br/>
+
+<option-value-ref option="device" value="3292"/><br/>
+<option-value-ref option="device" value="3294"/><br/>
+<option-value-ref option="device" value="3296"/><br/>
+<option-value-ref option="device" value="3297"/><br/>
+
+and also <option-value-ref option="device" value="lego"/>, which
+is equivalent to <option-value-ref option="device" value="3292"/>.
+</option-value>

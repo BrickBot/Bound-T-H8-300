@@ -1,0 +1,4 @@
+<option option="output_sep">
+Specifies the field-separator character for output. The value must be
+a single character.
+</option>

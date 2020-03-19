@@ -1,0 +1,3 @@
+<option option="trace call_bounds">
+Callee bounds during extreme-path search.
+</option>

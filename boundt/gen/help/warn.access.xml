@@ -1,0 +1,3 @@
+<option option="warn access">
+Unresolved dynamic data access (pointers).
+</option>

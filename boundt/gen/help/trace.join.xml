@@ -1,0 +1,4 @@
+<option option="trace join">
+The joint effect of a sequence of flow-graph steps,
+as computed in the "live variable" analysis.
+</option>

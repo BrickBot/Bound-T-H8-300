@@ -1,0 +1,3 @@
+<option option="trace volatile">
+Cells that are marked as "volatile".
+</option>

@@ -1,0 +1,4 @@
+<option option="warn large">
+Literal values too large to be analysed, as defined by the
+option <option-ref option="calc_max"/>.
+</option>

@@ -1,0 +1,4 @@
+<option-value option="show" value="stacks">
+The net effect of the subprogram on the stack height (the final
+height) of each stack.
+</option-value>

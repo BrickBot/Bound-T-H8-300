@@ -1,0 +1,4 @@
+<option option="trace live_cells">
+The cells (variables) that are "live" after each flow-graph
+step, as found by the "live variable" analysis.
+</option>

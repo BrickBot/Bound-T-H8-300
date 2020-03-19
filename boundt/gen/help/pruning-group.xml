@@ -1,0 +1,3 @@
+<option-group name="pruning">
+Options that control the pruning of unreachable parts of flow-graphs.
+</option-group>

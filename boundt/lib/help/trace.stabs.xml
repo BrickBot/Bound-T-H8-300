@@ -1,0 +1,3 @@
+<option option="trace stabs">
+STABS symbolic debug info in the target program.
+</option>

@@ -1,0 +1,4 @@
+<option option="coff_endian">
+The octet order (endianness) to be assumed for
+a COFF input file.
+</option>

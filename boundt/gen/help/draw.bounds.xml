@@ -1,0 +1,6 @@
+<option option="draw bounds">
+Show different execution bounds for the same subprogram as different
+nodes in the call-graph. Otherwise, all executions of a given subprogram
+are represented by one and the same node in the call-graph, labelled
+with the range of execution times computed for the subprogram.
+</option>

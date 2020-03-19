@@ -1,0 +1,8 @@
+<option option="elf_locals">
+Whether to use ELF symbols that have Local binding.
+Some compilers define simple labels as Local functions
+which can confuse tail-call detection if Local symbols
+are used. Other compilers may define real subprograms as
+Local functions and then Local symbols must be used in
+order to identify these functions by their names.
+</option>

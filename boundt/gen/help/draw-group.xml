@@ -1,0 +1,3 @@
+<option-group name="draw">
+Options that control the call-graph and flow-graph drawings.
+</option-group>

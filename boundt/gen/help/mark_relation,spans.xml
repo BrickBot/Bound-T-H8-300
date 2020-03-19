@@ -1,0 +1,7 @@
+<option-value option="mark_relation" value="spans">
+The program part spans the line holding the marker, corresponding to
+an assertion of the form "&lt;part&gt; that spans &lt;marker&gt;". In other
+words, the source-line number of the marker lies within the range of
+source-line numbers connected to the program part, but need not be
+exactly one of them.
+</option-value>

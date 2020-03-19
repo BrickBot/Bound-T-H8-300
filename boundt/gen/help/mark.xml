@@ -1,0 +1,11 @@
+<option option="mark">
+Specifies (the name of) a source-code mark-definition file to be read.
+The marks can then be used in assertions to identify the program parts
+to which assertions apply.
+The default is no mark file. This option can be used multiple times to
+specify multiple mark files. Each use of <option-ref option="mark"/>
+adds one mark-definition file. Mark-definition files are usually
+automatically generated from source-code files, where marks are embedded
+as comments. Tidorum provides the program "find_marks"
+for generating mark-definition files from source code.
+</option>

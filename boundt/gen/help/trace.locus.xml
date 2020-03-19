@@ -1,0 +1,4 @@
+<option option="trace locus">
+Computing the locus (machine-code address and
+source-code location) of a program part.
+</option>

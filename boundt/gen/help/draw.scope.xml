@@ -1,0 +1,6 @@
+<option option="draw scope">
+Qualify subprogram names with the scope. For example,
+subprogram "foo" in module "lib" is shown with the name
+"lib|foo". If this option is not used, only "foo" is shown
+as the name of the subprogram.
+</option>

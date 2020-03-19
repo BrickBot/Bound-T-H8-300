@@ -1,0 +1,4 @@
+<option option="trace scopes">
+Creating lexical scopes for symbols as found in
+the symbol table of the target program.
+</option>

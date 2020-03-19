@@ -1,0 +1,4 @@
+<option option="trace live_volatile">
+Volatile cells as they occur in the "live variable" analysis
+or its results.
+</option>

@@ -1,0 +1,8 @@
+<option option="draw min">
+Draw a flow-graph that shows the minimum worst-case time-bound,
+over all calls of the subprogram included in the present WCET
+analysis. Note that this is not the best-case execution time of
+the subprogram, but the smallest (usually context-specific) worst-case
+execution time bound found in the present analysis for this
+subprogram.
+</option>

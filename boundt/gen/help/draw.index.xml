@@ -1,0 +1,6 @@
+<option option="draw index">
+Show the internal index of each node, step, and edge. This can
+be useful to compare the flow-graphs with the output from
+the option <option-value-ref option="show" value="model"/>
+and some other optional outputs where those indices appear.
+</option>

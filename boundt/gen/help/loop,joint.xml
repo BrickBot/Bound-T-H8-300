@@ -1,0 +1,5 @@
+<option-value option="loop" value="joint">
+Analyse all induction variables jointly for
+ordering, and if that fails, for equality.
+No analysis of each variable separately.
+</option-value>

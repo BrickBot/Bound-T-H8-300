@@ -1,0 +1,7 @@
+<option option="symbols">
+Specifies (the name of) a symbol-file to be read. The default is to
+use no symbol file, and to use only the symbols from the target-
+program file (debug info). This option can be used several times to
+name several symbol files. Each use of <option-ref option="symbols"/>
+adds one file-name to the set.
+</option>

@@ -1,0 +1,12 @@
+The files in this directory are extracted from Mats Weber's Ada
+Component Library (see the files README and COPYING) for use in the
+Bound-T execution time analysis tool, originally developed by Space
+Systems Finland Ltd and currently developed and sold by Tidorum Ltd.
+
+Tidorum has made a few minor modifications in the content of some of
+these files, as shown by the version history log, and has added some
+small files. Tidorum claims no copyright for these modifications and
+additions.
+
+Niklas Holsti
+Tidorum Ltd.

@@ -1,0 +1,12 @@
+<option option="device">
+Selects the particular target device (processor, chip) on
+which the target program runs. A device must be selected,
+so this option is obligatory. However, the option name can
+be omitted, and just the device name given, so
+<option-value-ref option="device" value="lego"/> can be
+abbreviated to <option-ref option="lego"/>.
+
+The device name can also have an optional "H8/" prefix, for
+example<br/>
+<option-value-ref option="device" value="H8/3294"/>.
+</option>

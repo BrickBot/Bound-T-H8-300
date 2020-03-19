@@ -1,0 +1,6 @@
+<option-value option="bcc" value="unsigned">
+Model a signed condition as the matching unsigned condition.
+This helps the analysis of loops with signed counters
+but is safe only if the counter values are in the
+non-negative signed range 0 .. 127 or 0 .. 32767.
+</option-value>

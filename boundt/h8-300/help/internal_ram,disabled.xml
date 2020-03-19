@@ -1,0 +1,6 @@
+<option-value option="internal_ram" value="disabled">
+The internal RAM is disabled (bit SYSCR.RAME = 0).
+Addresses in this range map to the external RAM
+and access is at the (slower) external RAM speed.
+Implies <option-value-ref option="stack" value="external"/>.
+</option-value>

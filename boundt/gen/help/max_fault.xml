@@ -1,0 +1,4 @@
+<option option="max_fault">
+Aborts the analysis if more than this number of Fault messages are
+emitted.
+</option>

@@ -1,0 +1,4 @@
+<option-group name="trace">
+Options for additional output of analysis results or
+tracing of analysis phases and steps.
+</option-group>

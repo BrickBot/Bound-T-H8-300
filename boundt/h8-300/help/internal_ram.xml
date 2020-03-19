@@ -1,0 +1,3 @@
+<option option="internal_ram">
+The value of SYSCR.RAME to be assumed for the H8/3297 device.
+</option>

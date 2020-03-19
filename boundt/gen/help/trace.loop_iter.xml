@@ -1,0 +1,4 @@
+<option option="trace loop_iter">
+The iterations of the algorithm that finds the (natural) loops
+in control-flow graphs.
+</option>

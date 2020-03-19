@@ -1,0 +1,4 @@
+<option option="warn hull">
+The convex hull of the set of values of a variable
+over-estimates the set.
+</option>

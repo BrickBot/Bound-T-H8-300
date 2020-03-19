@@ -1,0 +1,4 @@
+<option option="dwarf_align">
+Assumed alignment of DWARF information blocks, in octets
+relative to the start of the DWARF segment.
+</option>

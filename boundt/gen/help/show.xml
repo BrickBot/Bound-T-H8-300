@@ -1,0 +1,4 @@
+<option option="show">
+Requests the output of selected details of the analysis results,
+not displayed by default.
+</option>

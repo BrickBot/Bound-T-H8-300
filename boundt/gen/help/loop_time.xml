@@ -1,0 +1,5 @@
+<option option="loop_time">
+Outputs WCET bounds for each loop, in addition to WCET bounds
+for subprograms. Effective only under the
+<option-ref option="time"/> option.
+</option>

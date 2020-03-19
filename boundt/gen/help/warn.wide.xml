@@ -1,0 +1,4 @@
+<option option="warn wide">
+Comparisons of numbers too wide to be analysed by modular arithmetic,
+as defined by the option <option-ref option="calc_mod_max"/>.
+</option>

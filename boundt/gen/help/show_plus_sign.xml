@@ -1,0 +1,6 @@
+<option option="show_plus_sign">
+Whether to show, in any displayed arithmetic expression, which
+non-negative constants in the expression are viewed as a
+signed numbers, by adding a plus sign in brackets ("[+]")
+after the constant.
+</option>

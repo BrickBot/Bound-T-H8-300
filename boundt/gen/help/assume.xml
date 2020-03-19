@@ -1,0 +1,5 @@
+<option option="assume">
+Enables assumptions on some of the properties of subprograms that are
+omitted from the analysis due to specific omit assertions or due to
+the <option-ref option="alone"/> option.
+</option>

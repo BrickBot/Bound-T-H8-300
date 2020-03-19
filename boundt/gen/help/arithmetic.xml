@@ -1,0 +1,7 @@
+<option option="arithmetic">
+Enforces arithmetic analysis even when not needed, or
+disables arithmetic analysis even when needed. By default
+arithmetic analysis is applied when and only when it is
+needed to bound a subprogram. This option can be overridden with
+assertions for specific subprograms.
+</option>

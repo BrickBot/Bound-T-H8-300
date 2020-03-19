@@ -1,0 +1,4 @@
+<option option="trace steps">
+The flow-graphs on the individual instruction (step) level,
+without collecting basic blocks of consecutive instructions.
+</option>

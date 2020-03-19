@@ -1,0 +1,41 @@
+<option option="Bound-T usage and arguments">
+<p>
+Normal usage (see below for special cases):
+</p>
+<p><dl>
+<dt>boundt_&lt;target&gt; [options] target-prog-file [subprog ...]</dt>
+</dl>
+</p>
+<p>
+Arguments:
+</p>
+<p><dl>
+<dt>[options]</dt>
+<dd>Options to control and guide the analysis.
+</dd>
+<dt>target-prog-file</dt>
+<dd>The name of the executable target program file to
+    be analysed for bounds on execution time and/or
+    stack usage.
+</dd>
+<dt>[subprog...]</dt>
+<dd>
+   The names of one or more "root" subprograms to be analysed.
+   All subprograms that are called from the root subprograms
+   are usually also analysed.
+</dd>
+</dl>
+</p>
+<p>
+When the <option-ref option="dump"/> option is used, the root-subprogram
+names can be omitted. The command line takes a different form when "HRT
+mode" is selected by the <option-ref option="hrt"/> option or when the
+<option-ref option="help"/> option is used. To learn more about these
+cases, run Bound-T with the arguments "-help dump", "-help hrt", or
+"-help help", respectively.
+</p>
+<p>
+To learn more about Bound-T options in general, run Bound-T
+with the arguments "-help options".
+</p>
+</option>

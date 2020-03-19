@@ -1,0 +1,4 @@
+<option option="max_warn">
+Aborts the analysis if more than this number of Warning messages are
+emitted.
+</option>

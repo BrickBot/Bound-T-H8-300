@@ -1,0 +1,4 @@
+<option option="trace alias">
+Assignments to cells that may be aliased, such that assigning
+a value to one cell may alter the values of other cells.
+</option>

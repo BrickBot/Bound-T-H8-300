@@ -1,0 +1,9 @@
+<option option="ur">
+Specifies which registers can be used for passing
+parameters. Use the same option as for the compiler.
+
+For historical reasons, this option can also be written
+without an equal sign, for example 
+<option-ref option="ur3"/>
+instead of <option-value-ref option="ur" value="3"/>.
+</option>

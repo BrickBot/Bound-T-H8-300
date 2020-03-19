@@ -1,0 +1,5 @@
+<option-value option="loop" value="trad">
+Analyse each potential counter (induction variable)
+separately, first for ordering relations (&lt;, &lt;=,
+&gt;=, &gt;), and if that fails, for equality relations.
+</option-value>

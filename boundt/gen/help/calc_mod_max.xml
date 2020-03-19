@@ -1,0 +1,11 @@
+<option option="calc_mod_max">
+Specifies the maximum operand width (bits per number) for
+which the arithmetic analysis uses modular formulas (residues) in
+comparisons (&lt;, &lt;=, =, &gt;=, &gt;). For wider numbers the
+non-modular, unbounded integer comparisons are used.
+If the number is zero, modular formulas are never used.
+Note that the value of the option <option-ref option="calc_max"/>
+is automatically increased to at least 2**(calc_mod_max).<br/>
+WARNING: Modular arithmetic analysis is experimental and
+often fails, perhaps by aborting the Omega Calculator.
+</option>

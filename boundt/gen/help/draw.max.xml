@@ -1,0 +1,4 @@
+<option option="draw max">
+Draw a flow-graph that shows the maximum worst-case 
+time-bound, over all calls of the subprogram.
+</option>

@@ -1,0 +1,4 @@
+<option-value option="show" value="counts">
+The (worst case) execution counts of flow-graph elements (steps,
+edges).
+</option-value>

@@ -1,0 +1,6 @@
+<option option="draw">
+A collection of Boolean options that control the number and form of the
+drawings, if some call-graphs or control-flow graphs are drawn.
+See the options <option-ref option="dot"/> and
+<option-ref option="dot_dir"/>.
+</option>

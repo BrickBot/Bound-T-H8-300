@@ -1,0 +1,5 @@
+<option option="imp combine_terms">
+Simplify arithmetic expressions by combining
+similar terms during the constant-propagation
+analysis.
+</option>

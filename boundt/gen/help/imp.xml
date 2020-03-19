@@ -1,0 +1,6 @@
+<option-group name="imp">
+A collection of options that control internal implementation
+alternatives and parameters. The value is a list of options in
+the usual forms. The meaning and effect of these options are
+deliberately not documented, beyond the following brief descriptions.
+</option-group>

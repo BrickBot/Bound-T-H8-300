@@ -1,0 +1,5 @@
+<option option="trace">
+A collection of Boolean options that request on-the-fly tracing of a processing
+event such as the start or end of a particular analysis, or an intermediate
+result. By default all these options are false (no trace).
+</option>

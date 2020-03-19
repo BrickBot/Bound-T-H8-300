@@ -1,0 +1,8 @@
+<option option="prim_du">
+For assertions that identify loops by the cells (variables)
+that are "defined" or "used" in the loop, this option
+enables the inclusion of the cells referenced
+in the "primitive" model of the computation, before the
+model is refined by constant propagation and arithmetic
+analysis. This can find more defined/used cells.
+</option>

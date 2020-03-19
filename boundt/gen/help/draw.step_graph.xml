@@ -1,0 +1,4 @@
+<option option="draw step_graph">
+Draw flow-graph steps (single instructions), not nodes
+(basic blocks of consecutive instructions).
+</option>

@@ -1,0 +1,57 @@
+total 330
+-rw-r--r--   1 michel   mics         5256 Sep 24 16:42 CHANGELOG
+-rw-r--r--   1 michel   mics        82600 Dec  7  1998 HARTMUT_DOCUMENTATION
+-rw-rw-r--   1 michel   mics        26428 Sep 24 15:26 LGPL.txt
+lrwxr-xr-x   1 michel   mics            8 Sep 24 16:45 LICENSE -> LGPL.txt
+-rw-r--r--   1 michel   mics            0 Sep 29 16:41 MANIFEST
+-rw-r--r--   1 michel   mics         2899 Dec  7  1998 MIPLIB_RESULTS
+-rw-r--r--   1 michel   mics         4868 Dec  7  1998 MPS.description
+-rw-r--r--   1 michel   mics         3379 Sep 24 16:44 Makefile
+-rw-r--r--   1 michel   mics         3380 Dec  7  1998 Makefile.linux
+-rw-r--r--   1 michel   mics         4576 Dec  7  1998 NETLIB_RESULTS
+-rw-r--r--   1 michel   mics          746 Sep 24 16:44 README
+-rw-r--r--   1 michel   mics         1857 Dec  7  1998 debug.c
+-rw-r--r--   1 michel   mics          199 Dec  7  1998 debug.h
+-rw-r--r--   1 michel   mics         6837 Dec  7  1998 demo.c
+-rw-r--r--   1 michel   mics         2340 Dec  7  1998 hash.c
+-rw-r--r--   1 michel   mics          552 Dec  7  1998 hash.h
+-rw-r--r--   1 michel   mics         1242 Dec  7  1998 lex.l
+-rw-r--r--   1 michel   mics         3641 Dec  7  1998 lp.y
+-rw-r--r--   1 michel   mics          488 Dec  7  1998 lp2mps.c
+drwxr-xr-x   2 michel   mics         1024 Dec  7  1998 lp_examples
+-rw-r--r--   1 michel   mics         7648 Dec  7  1998 lp_solve.1
+-rw-r--r--   1 michel   mics         6055 Dec  7  1998 lp_solve.c
+-rw-r--r--   1 michel   mics        10680 Dec  7  1998 lp_solve.man
+-rw-r--r--   1 michel   mics         1034 Dec  7  1998 lpglob.h
+-rw-r--r--   1 michel   mics        46824 Apr  1  1999 lpkit.c
+-rw-r--r--   1 michel   mics        15575 Dec  7  1998 lpkit.h
+-rw-r--r--   1 michel   mics          466 Dec  7  1998 mps2lp.c
+-rw-r--r--   1 michel   mics           25 Sep 24 16:42 patchlevel.h
+-rw-r--r--   1 michel   mics           95 Dec  7  1998 presolve.c
+-rw-r--r--   1 michel   mics        17247 Dec  7  1998 read.c
+-rw-r--r--   1 michel   mics          301 Dec  7  1998 read.h
+-rw-r--r--   1 michel   mics        17222 Dec  7  1998 readmps.c
+-rw-r--r--   1 michel   mics        43153 Feb 22  1999 solve.c
+-rw-r--r--   1 michel   mics           50 Dec  7  1998 test.lp
+-rw-r--r--   1 michel   mics          239 Dec  7  1998 test.mps
+
+lp_examples:
+total 53
+-rw-r--r--   1 michel   mics          334 Dec  7  1998 demo_lag.lp
+-rw-r--r--   1 michel   mics          436 Dec  7  1998 demo_lag.out
+-rw-r--r--   1 michel   mics           65 Dec  7  1998 ex1.lp
+-rw-r--r--   1 michel   mics          397 Dec  7  1998 ex1.mps
+-rw-r--r--   1 michel   mics          189 Dec  7  1998 ex1.out
+-rw-r--r--   1 michel   mics           58 Dec  7  1998 ex2.lp
+-rw-r--r--   1 michel   mics          162 Dec  7  1998 ex2.out
+-rw-r--r--   1 michel   mics           55 Dec  7  1998 ex3.lp
+-rw-r--r--   1 michel   mics          159 Dec  7  1998 ex3.out
+-rw-r--r--   1 michel   mics         4821 Dec  7  1998 ex4.lp
+-rw-r--r--   1 michel   mics         4021 Dec  7  1998 ex4.out
+-rw-r--r--   1 michel   mics         8873 Dec  7  1998 ex5.lp
+-rw-r--r--   1 michel   mics         6451 Dec  7  1998 ex5.out
+-rw-r--r--   1 michel   mics          512 Dec  7  1998 ex6.lp
+-rw-r--r--   1 michel   mics          293 Dec  7  1998 ex6.out
+-rw-r--r--   1 michel   mics         7858 Dec  7  1998 ex7.lp
+-rw-r--r--   1 michel   mics         1188 Dec  7  1998 ex7.out
+-rw-r--r--   1 michel   mics         6451 Dec  7  1998 xx

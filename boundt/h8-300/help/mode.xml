@@ -1,0 +1,6 @@
+<option option="mode">
+The processor operating mode, which determines the memory address
+space map. The operating mode is set by two input pins (read-only)
+and is assumed to be constant throughout the execution (or at least
+the part of the execution that we analyze).
+</option>

@@ -1,0 +1,4 @@
+<option option="max_err">
+Aborts the analysis if more than this number of Error messages are
+emitted.
+</option>

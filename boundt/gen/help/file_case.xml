@@ -1,0 +1,5 @@
+<option option="file_case">
+Defines how the assertion-mapper compares actual source-file
+names to file-names written in assertions, with reference to
+lower-case vs. upper-case letters (see also <option-ref option="file_match"/>).
+</option>

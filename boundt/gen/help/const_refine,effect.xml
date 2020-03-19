@@ -1,0 +1,4 @@
+<option-value option="const_refine" value="effect">
+Refine the arithmetic effect of each flow-graph step
+and any dynamic access pointers therein.
+</option-value>

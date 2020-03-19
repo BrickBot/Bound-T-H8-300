@@ -1,0 +1,8 @@
+<option option="bitwise_bounds">
+Enables arithmetic analysis of bitwise and-or operators. If
+enabled, the analysis takes the result of "x<nbsp/>and<nbsp/>y" to lie
+in 0<nbsp/>..<nbsp/>min(x,y), and the  result of "x<nbsp/>or<nbsp/>y"
+to lie in max(0,x,y)<nbsp/>..<nbsp/>x<nbsp/>+<nbsp/>y. Bitwise-bounds
+are enabled by default. If bitwise bounds are disabled, the result of a
+bitwise and-or is considered unknown (opaque).
+</option>

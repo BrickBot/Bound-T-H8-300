@@ -1,0 +1,4 @@
+<option option="trace live_step">
+The "live" assignments in each flow-graph step (instruction)
+as found by the "live variable" analysis.
+</option>

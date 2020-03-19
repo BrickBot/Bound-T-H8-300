@@ -1,0 +1,3 @@
+<option-group name="iar">
+Options for analysing programs compiled with the IAR Systems C compiler.
+</option-group>

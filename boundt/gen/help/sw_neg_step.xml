@@ -1,0 +1,11 @@
+<option option="sw_neg_step">
+Whether to convert a deduced large induction-variable step
+that represents a small negative step, to that small negative
+step. For example, in some cases an 8-bit step of -1 is
+represented in the code or intermediate analysis results by
+a positive step of 255, relying on wrap-around of two's
+complement addition. This option lets the analysis assume
+that adding 255 to an 8-bit induction variable is the same
+as subtracting 1 from the variable, as far as the resulting
+value of the variable is concerned.
+</option>

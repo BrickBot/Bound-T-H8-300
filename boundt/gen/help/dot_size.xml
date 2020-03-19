@@ -1,0 +1,6 @@
+<option option="dot_size">
+Sets the desired size of each graph drawing (see the <option-ref option="dot"/>
+option). The size is a string specified as "width,height" where width and height
+are in inches (one inch = 2.54 cm). See the DOT manual. To disable the default
+size, specify an empty size: -dot_size="".
+</option>

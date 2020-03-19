@@ -1,0 +1,5 @@
+<option option="warn role">
+An assertion on the role of an instruction was not
+used, because the instruction was not analysed, or
+because its role is fixed.
+</option>

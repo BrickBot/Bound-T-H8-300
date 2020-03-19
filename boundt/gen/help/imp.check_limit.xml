@@ -1,0 +1,4 @@
+<option option="imp check_limit">
+Whether to double-check the limits computed for
+variables.
+</option>

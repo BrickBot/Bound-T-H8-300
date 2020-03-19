@@ -1,0 +1,4 @@
+<option option="warn file_case">
+Matching file-names in assertions to real file-names
+depends on the option <option-ref option="file_case"/>.
+</option>

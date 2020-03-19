@@ -1,0 +1,6 @@
+<option option="warn sw_neg_step">
+When the loop-bounds analysis converts a deduced large positive
+induction-variable step into the corresponding small negative step
+(by two's complement rules).
+See the option <option-ref option="sw_neg_step"/>.
+</option>

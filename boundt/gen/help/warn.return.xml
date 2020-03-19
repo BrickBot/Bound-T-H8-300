@@ -1,0 +1,3 @@
+<option option="warn return">
+A call to a subprograms that never returns.
+</option>

@@ -1,0 +1,5 @@
+<option-value option="lines" value="around">
+If there are no exact connections, show the preceding source-line
+if there is one, and otherwise the following source-line.
+Note, however, that this can sometimes display false connections.
+</option-value>

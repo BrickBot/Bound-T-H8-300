@@ -1,0 +1,7 @@
+<option option="imp sw_neg">
+Whether to convert, in the model of the computation, an
+addition of a large unsigned constant that represents a
+small negative (2's complement) number, to a subtraction of
+that small number, and vice versa for converting a subtraction
+to an addition.
+</option>

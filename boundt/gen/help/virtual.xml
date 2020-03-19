@@ -1,0 +1,5 @@
+<option option="virtual">
+Controls the analysis of virtual function calls for target
+processors and programming languages where this concept is
+implemented.
+</option>

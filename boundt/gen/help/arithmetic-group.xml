@@ -1,0 +1,3 @@
+<option-group name="arithmetic">
+Options that control and guide the (Presburger) arithmetic analysis.
+</option-group>

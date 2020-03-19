@@ -1,0 +1,6 @@
+<option option="imp const_rel">
+Whether to use abstract values of the form "base+offset"
+in the constant-propagation analysis. Such values are often
+necessary to model computations with local stack-allocated
+variables.
+</option>

@@ -1,0 +1,5 @@
+<option option="split">
+Splits the time-bounds for subprograms, calls, and loops into "self"
+and "callees" parts. Otherwise only the total (self + callees) is given.
+Effective only under the <option-ref option="time"/> option.
+</option>

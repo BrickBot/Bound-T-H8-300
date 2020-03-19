@@ -1,0 +1,84 @@
+# GNAT environment settings for boundt/h8-300/i386-debian_lenny-gnat4.3.2.
+#
+# A component of the Bound-T Worst-Case Execution Time Tool.
+# Copyright (c) 2010 Tidorum Ltd.
+#
+#
+# $Revision: 1.1 $
+# $Date: 2010/11/30 18:07:44 $
+#
+# $Log: gnat-env-vals,v $
+# Revision 1.1  2010/11/30 18:07:44  niklas
+# First version.
+#
+
+
+if [ $# -lt 1 ]; then
+   echo "Usage: source gnat-env-vals licencedir [licencedir..]" >&2
+   echo "where licencedir is a subdirectory of boundt/licenses." >&2
+   return 1
+fi
+
+# We assume that Gnat is on the default PATH.
+
+export BT=../..
+# The main Bound-T directory.
+
+export PF=${BT}/platform
+# The directory for platform-specific stuff.
+
+export BASICS=${BT}/aw:${BT}/gen:${BT}/lib:${BT}/opt:${BT}/utest
+# The basic Bound-T stuff, including unit tests at the end.
+
+export TARG=.:..
+# The target-specific stuff.
+# The current working directory is included for host_version.ads
+# and possible host-and-target-specific files.
+
+export PLATF=${PF}/unix:${PF}/gnat:${PF}/with-tasking:${PF}/arith17
+# The platform-specific libraries.
+
+export COMP=${BT}/..
+# The directory containing component stuff.
+
+export MW=${COMP}/mw_components
+export LGL=${COMP}/lgl-adt
+export OTK=${COMP}/OpenToken
+export LIBS=${LGL}:${MW}:${OTK}
+# The helpful component libraries.
+
+export OPTS=
+# The optional functionality to be included.
+# Put a colon at the end if not null.
+
+# Collect the licence directories:
+
+licdirs=""
+
+for ldn in $*; do
+
+   licdir=${BT}/licenses/${ldn}
+
+   if [ ! -d ${licdir} ]; then
+      echo "${licdir}: no such directory" >&2
+      return 2
+   fi
+
+   if [ "${licdirs}" != "" ]; then
+      licdirs="${licdirs}:"
+   fi
+
+   licdirs="${licdirs}${licdir}"
+
+done
+
+export FULL=${TARG}:${PLATF}:${OPTS}${licdirs}:${BASICS}:${LIBS}
+
+# We do not include the GtkAda paths here, but expect the developer
+# to use gtkada-config as suggested in the GtkAda documentation.
+
+export ADA_INCLUDE_PATH=${FULL}
+export ADA_OBJECTS_PATH=${FULL}
+
+echo "Ada paths included:"
+echo $ADA_INCLUDE_PATH | tr ':' '\012'

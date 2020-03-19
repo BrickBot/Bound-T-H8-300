@@ -1,0 +1,4 @@
+<option-value option="show" value="deeply">
+Shows the results (as selected by other items) for all analysed
+subprograms in the call graph, not just for the root subprograms.
+</option-value>

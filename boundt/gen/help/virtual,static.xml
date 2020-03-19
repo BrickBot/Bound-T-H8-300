@@ -1,0 +1,7 @@
+<option-value option="virtual" value="static">
+A virtual function call is modelled as a set
+of alternative static calls to all possible
+implementations of the virtual function.
+The analysis does not try to decide which of
+these calls is/are executed.
+</option-value>

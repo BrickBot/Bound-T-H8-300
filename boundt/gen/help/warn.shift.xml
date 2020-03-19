@@ -1,0 +1,6 @@
+<option option="warn shift">
+A shift operation with a shift-amount too large to be modelled
+as a multiplication, per the option
+<option-ref option="calc_shift_mul_max"/>,
+giving an unknown result in the arithmetic analysis.
+</option>

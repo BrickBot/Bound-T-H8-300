@@ -1,0 +1,10 @@
+<option option="draw_classes">
+Whether to draw a class hierarchy diagram from the symbolic
+information (possibly) available in the UBROF executable file
+under analysis.
+See also
+<option-ref option="class_dot"/>,
+<option-ref option="class_diagram_size"/>,
+<option-ref option="draw_class_functions"/>, and
+<option-ref option="draw_class_members"/>.
+</option>

@@ -1,0 +1,6 @@
+<option option="implicit">
+In the assertions, enables the implicit identification of
+a "containing" part, for example a subprogram, by the assertions on
+inner parts of the subprogram, for example calls or loops within the
+subprogram. This function is NOT YET IMPLEMENTED.
+</option>

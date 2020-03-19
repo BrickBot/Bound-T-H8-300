@@ -1,0 +1,12 @@
+<option option="dump">
+Dumps the contents of the target program executable file
+as text on standard output, instead of analysing the program.
+The form and content of the dump depends on the format
+of the executable file (e.g. ELF or COFF) and on the target
+processor.
+This option disables the analysis, so there should be no
+root subprogram names on the command-line after the name
+of the target program executable file. Moreover, the
+<option-ref option="hrt"/> option should not be used together
+with <option-ref option="dump"/>.
+</option>

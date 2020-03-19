@@ -1,0 +1,5 @@
+<option-value option="stack_area" value="external">
+The stack (SP = R7) is in external (off-chip) RAM.
+Stack accesses are slow.
+Overridden by <option-value-ref option="mode" value="3"/>.
+</option-value>

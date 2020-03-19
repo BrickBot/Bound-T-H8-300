@@ -1,0 +1,7 @@
+<option option="const">
+Enables constant-propagation analysis. Constant propagation is applied
+to subprograms before the arithmetic analysis. Constant propagation is
+sometimes necessary to analyse non-arithmetic operations such as
+bitwise logical and/or/xor and the like. Constant propagation by
+itself is often sufficient to analyse stack usage.
+</option>

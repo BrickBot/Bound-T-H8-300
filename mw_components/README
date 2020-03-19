@@ -1,0 +1,668 @@
+Mats Weber's Ada Component Library, version 2.0
+-----------------------------------------------
+
+Contents
+--------
+
+   Legal Stuff
+   Contact Info
+   Recommendations
+   Introduction
+   Component Descriptions
+
+
+Legal Stuff
+-----------
+
+Note: These components are released under the same conditions as the
+GNAT runtime library, but are not otherwise related to GNAT.
+
+--- begin copyright text ---
+Copyright (c) 1999 Mats Weber, Ch. du Grillon 10, 1007 Lausanne, Switzerland.
+
+These components are free software; you can redistribute it and/or
+modify them under terms of the GNU General Public License as published
+by the Free Software Foundation; either version 2, or (at your option)
+any later version. These components are distributed in the hope that
+they will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License
+distributed with these components; see file COPYING. If not, write to
+the Free Software Foundation, 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
+
+As a special exception, if other files instantiate generics from this
+library, or you link part of this library with other files to produce
+an executable, this library does not by itself cause the resulting
+executable to be covered by the GNU General Public License. This
+exception does not however invalidate any other reasons why the
+executable file might be covered by the GNU Public License.
+
+These components were originally developed by Mats Weber at EPFL
+(Swiss Federal Institute of Technology, Computer Science Theory
+Laboratory and Software Engineering Laboratory) from 1985 to 1990, and
+then used at Matrix SA, and then ELCA Matrix SA from 1991 to
+1998. Some of the components (math/BCH codes, Galois fields) were
+developed as part of my degree in math, while I was a student at
+EPFL.
+--- end copyright text ---
+
+
+Contact Info
+------------
+
+Mats Weber
+Ch. du Grillon 10
+1007 Lausanne
+Switzerland
+mailto:matsw@innocent.com
+
+
+Recommendations
+---------------
+
+If you redistribute this package, please do not redistribute only a
+part of it, but the whole package in its original form. If you find a
+bug, I would prefer that you send me a report and I will correct it
+and release a new version of the whole library, instead of having
+multiple versions floating around.
+
+I would prefer that these components not be used in military or
+nuclear software, or for other unethical purposes. This is not part of
+the legal text, just the author's wish.
+
+
+Introduction
+------------
+
+The components in this library fall into these main categories:
+
+   - Data Structures (Bags, Tables, Queues, Stacks, Lists, etc.)
+   - Math (ZpZ_Field, Polynomials, Permutations, Linear_Programming, etc.)
+   - Ada Programming Tools (Makeup_Ada_File, Ada_Lexical_Analyzer, etc.)
+   - OS Interface (CPU, VMS_File_Names, etc.)
+
+The most useful to you will probably be the data structures because I
+wrote them to be as versatile as possible.
+
+These components are for Ada 95 and generally will not compile with
+Ada 83, but if you need to use them in an Ada 83 environment, almost
+all you will have to do is remove the (<>) in generic formal types
+where appropriate.
+
+I have deliberately chosen not to systematically use Ada 95's
+finalization stuff because doing so forces the generic packages to be
+instantiated at library level, something I do not want to require (I
+have many places in code that uses the components where this would be
+unacceptable). Moreover, finalization can be easily added where
+needed. What should be done is two variants of each data structure
+component, one without finalization and one with finalization, but I
+have no time to do that now, maybe in a later version.
+
+The file naming convention used is the same as GNAT's, with very few
+exceptions: some very long names have been shortened and some
+OS-specific variants end in --<OS_name>.adb.
+
+
+Component Descriptions
+----------------------
+
+The rest of this document contains all the components in alphabetical
+order with a short description of what they do. This documentation is
+short (laziness) but the components themselves are fairly well
+documented with comments.
+
+ada_lexical_analyzer-ada_keywords.adb
+ada_lexical_analyzer-analyzer.adb
+ada_lexical_analyzer.adb
+ada_lexical_analyzer.ads
+
+   A lexical analyzer for the Ada 95 language. Not very efficient,
+   but it works.
+
+bags-access_by_item.adb
+bags-access_by_item.ads
+bags-bounded_operations.adb
+bags-bounded_operations.ads
+bags-implementation.adb
+bags-set_operations.adb
+bags-set_operations.ads
+bags.adb
+bags.ads
+
+   This is probably the most useful set of packages in this
+   library. It implements associative tables using AVL trees. Its
+   specification and implementation are split into several generic
+   subpackages so that the whole thing does not get instantiated each
+   time.
+
+bch_code.adb
+bch_code.ads
+bch_code_exceptions.ads
+
+   Implements operations on BCH codes. I wrote this for my degree in
+   math, so if you don't know what a BCH code is, these are probably
+   not worth looking at.
+
+binary_search.adb
+binary_search.ads
+
+   Implements binary searching in a sorted array.
+
+blurred_logic.adb
+blurred_logic.ads
+
+   Implements a boolean type with three values (False, True and Maybe)
+   and operations on that type.
+
+bounded_bags.adb
+bounded_bags.ads
+
+   Same as bags above but does not use the heap (stores in an array
+   instead). Searching is O(Log N) but insertion is not.
+
+buffers.adb
+buffers.ads
+
+   Implements a simple buffer, bounded or unbounded.
+
+canonical_bch_codes.adb
+canonical_bch_codes.ads
+
+   More operations on BCH codes (see above).
+
+case_conversions.adb
+case_conversions.ads
+
+   Upper/Lower case conversions. Probably not very useful anymore
+   since Ada 95, but left there because some components use it.
+
+character_handler.adb
+character_handler.ads
+
+   Basic operations on Characters. Probably not very useful anymore
+   since Ada 95, but left there because some components use it.
+
+check_bch_bound.adb
+check_bch_bound_common.adb
+check_bch_bound_common.ads
+check_bch_bound_random.adb
+
+   More operations on BCH codes (see above).
+
+check_file_for_tabs.adb
+
+   Checks if a text file contains tabs.
+
+cpu-system_interface--unix.adb
+cpu-system_interface--vms.adb
+cpu.adb
+cpu.ads
+
+   Package for CPU time measurements. There is a body for UNIX and VMS,
+   just use the appropriate file for your system.
+
+directed_graph_operations.adb
+directed_graph_operations.ads
+
+   Operations on directed graphs (uses Graph_Handler).
+
+discrete_sets.adb
+discrete_sets.ads
+
+   Discrete sets and their operations.
+
+distributor-link_controller.adb
+distributor-network_handler.adb
+distributor-read_nodes_file.adb
+distributor.adb
+distributor.ads
+
+   Package for distributing the execution of programs on several nodes
+   of a network. Currently only implemented for VMS. This is probably
+   totally obsolete since the distributed systems annex.
+
+dynamic_arrays.adb
+dynamic_arrays.ads
+
+   Dynamic arrays (very similar to Tables).
+
+exchange.adb
+exchange.ads
+
+   Generic procedure to swap two items of any nonlimited type.
+
+exponentiation_functions.adb
+exponentiation_functions.ads
+
+   Generic exponentiation functions.
+
+extended_calendar.adb
+extended_calendar.ads
+
+   Calendar with support for very large values of Duration.
+
+fast_galois_field-initialize_tables.adb
+fast_galois_field.adb
+fast_galois_field.ads
+fast_gf_base_type.ads
+
+   Fast implementation of the Galois_Field package (part of my work on
+   BCH codes).
+
+file_name_enumeration--unix.adb
+file_name_enumeration--vms.adb
+file_name_enumeration.ads
+
+   Enumerate files matching a certain regexp. Probably much too simple
+   to be really reusable.
+
+find_shortest_product.adb
+find_shortest_product.ads
+
+   Finds the shortest product yielding a given result by exhaustive
+   enumeration.
+
+float_comparison.adb
+float_comparison.ads
+
+   Comparison of floating point types. Use with caution.
+
+galois_field.adb
+galois_field.ads
+
+   Implementation of operations in Finite fields (part of my work on
+   BCH codes).
+
+general_sets.adb
+general_sets.ads
+
+   Sets of any type implemented as AVL trees (based on Bags).
+
+generic_varying_text.adb
+generic_varying_text.ads
+
+   Generic package for varying strings. Largely obsolete since Ada 95.
+
+gf_base_type.ads
+
+   More on Galois fields (see above).
+
+grammars-convert_to_greibach_nf.adb
+grammars.adb
+grammars.ads
+
+   Operations on grammars.
+
+graph_handler.adb
+graph_handler.ads
+graph_operations.adb
+graph_operations.ads
+
+   Representation of a graph and operations on it.
+
+hamiltonian_circuits_on_hypercube.adb
+hypercube.adb
+hypercube.ads
+
+   Calculations on the hypercubes of any dimension.
+
+integer_primes.ads
+integer_primes_parameters.adb
+integer_primes_parameters.ads
+
+   Instance of Prime_Numbers for Standard.Integer.
+
+keys.adb
+keys.ads
+
+   Package for unique identification keys.
+
+large_integer_handler.ads
+large_integer_handler_types.ads
+large_integers-fixed_length_operations.adb
+large_integers-image.adb
+large_integers-variable_length_ops-val.adb
+large_integers-variable_length_ops.adb
+large_integers.adb
+large_integers.ads
+
+   Extended precision integers. A better implementation using
+   finalization would be possible.
+
+largest_numeric_types.ads
+
+   Package to get the most largest numeric types available in an
+   implementation.
+
+lexicographic_order.adb
+lexicographic_order.ads
+
+   Implementation of lexicographic order on arrays of any ordered
+   type.
+
+linear_programming-add_constraint.adb
+linear_programming-change_bounds.adb
+linear_programming-change_objective.adb
+linear_programming-create_program.adb
+linear_programming-solve-compress.adb
+linear_programming-solve-dual_phase.adb
+linear_programming-solve-primal_phase_1.adb
+linear_programming-solve-primal_phase_2.adb
+linear_programming-solve.adb
+linear_programming.adb
+linear_programming.ads
+
+   Linear programming (simplex method). Not the most efficient you
+   will find, but it works.
+
+list_canonical_bch_codes.adb
+
+   More BCH code stuff.
+
+lists.adb
+lists.ads
+
+   Doubly linked lists. Singly linked lists are available in Queues
+   and Stacks, depending on what you need to do with them.
+
+makeup_ada_file.adb
+
+   Program to change the case of Ada keywords and identifiers in Ada
+   source. Supports an exceptions file to correctly write identifiers
+   such as Text_IO, etc.
+
+mandelbrot_set.adb
+mandelbrot_set.ads
+
+   Operations on the Mandelbrot set.
+
+matrices.adb
+matrices.ads
+
+   Generic package for handling matrices.
+
+measure.adb
+
+   Program that measures Ada source code (lines, non-empty non-comment
+   lines, semicolons).
+
+measure_distributor_transmition_time.adb
+
+   Program to measure how fast Distributor transmits messages.
+
+min_max_functions.adb
+min_max_functions.ads
+
+   Generic Min and Max functions on pairs and arrays of any ordered
+   type.
+
+multiple_key_bags.adb
+multiple_key_bags.ads
+
+   Bags with multiple keys. Inefficient implementation uses tasks
+   because Ada 83 has no subprogram types.
+
+nondirected_graph_operations.adb
+nondirected_graph_operations.ads
+
+   Operations on nondirected graphs. Uses Graph_Handler.
+
+number_images.adb
+number_images.ads
+
+   Image/Value functions for numeric types. Essentially written to get
+   rid of the nasty extra space in Ada's Type'Image attribute.
+
+permutations.adb
+permutations.ads
+
+   Package implementing operations on permutations of finite sets.
+
+polynomials.adb
+polynomials.ads
+
+   Generic polynomials package.
+
+postscript_mandelbrot.adb
+
+   Program to generate a black and white postscript image of the
+   Mandelbrot Set.
+
+prime_numbers.adb
+prime_numbers.ads
+
+   Generic package for operations on prime numbers.
+
+print_ada_file.adb
+
+   Program to generated escape sequences to print Ada source with bold
+   keywords and italic comments.
+
+print_gf_addition_table.adb
+
+   More Galois field stuff (see above).
+
+protected_bags-access_by_item.adb
+protected_bags-access_by_item.ads
+protected_bags-bounded_operations.adb
+protected_bags-bounded_operations.ads
+protected_bags-implementation.adb
+protected_bags-set_operations.adb
+protected_bags-set_operations.ads
+protected_bags.adb
+protected_bags.ads
+protected_keys.adb
+protected_keys.ads
+protected_tables.adb
+protected_tables.ads
+
+   Same as Bags, but protected by a semaphore for access by multiple
+   tasks.
+
+queues.adb
+queues.ads
+
+   Generic queues package.
+
+quick_sort.adb
+quick_sort.ads
+
+   Generic quick sort procedure.
+
+quick_sort_function.adb
+quick_sort_function.ads
+
+   Generic quick sort function.
+
+random.ads
+random_generator.adb
+random_generator.ads
+random_generator_period.adb
+random_generator_period.ads
+random_numbers.adb
+random_numbers.ads
+random_numeric_types.ads
+
+   Random generation packages. Probably made obsolete by Ada 95, but I
+   include them because some of my programs are still using it.
+
+read_write_semaphore.adb
+read_write_semaphore.ads
+
+   Read/write semaphore.
+
+rtf_ada_file.adb
+
+   Program to transform Ada source code into RTF format with bold
+   keywords for use in a text processing program.
+
+show_tabs.adb
+
+   Program to check if text file have tabs.
+
+simple_semaphore.adb
+simple_semaphore.ads
+
+   Simple semaphore (no distinction between read and modify
+   operations).
+
+solve_matching_problem.adb
+
+   Program to solve a matching problem with linear programming
+   (experimental).
+
+square_root_functions.adb
+square_root_functions.ads
+
+   Generic functions to extract the square root of integer and fixed
+   point numbers without using floats.
+
+stacks.adb
+stacks.ads
+
+   Generic stacks package.
+
+standard_random.ads
+
+   Instance of the random generator with Standard.Integer and
+   Standard.Float.
+
+state.adb
+
+   Program to show processes in a VMS system with more information
+   than "show system" gives.
+
+storage_units.ads
+
+   Definition of storage units (used in VMS stuff).
+
+string_case_conversions.ads
+
+   Case conversion functions for Standard.String (obsolete since Ada
+   95).
+
+string_handler.ads
+string_operations.adb
+string_operations.ads
+
+   String manipulation functions.
+
+string_text_io.ads
+
+   Additional Text_IO functions for strings.
+
+tables.adb
+tables.ads
+
+   Generic associative tables, based on Bags.
+
+test_ada_lexical_analyzer.adb
+test_bags.adb
+test_bags_with_zero_keys.adb
+test_bch_code.adb
+test_bch_code_fast.adb
+test_character_handler.adb
+test_complex.adb
+test_cpu.adb
+test_discrete_sets.adb
+test_distributor.adb
+test_extended_calendar.adb
+test_fast_galois_field.adb
+test_fifo_channel.adb
+test_galois_field.adb
+test_general_sets.adb
+test_grammars-get.adb
+test_grammars-put.adb
+test_grammars.adb
+test_graph_handler.adb
+test_large_integer_handler.adb
+test_large_integers.adb
+test_large_prime_numbers.adb
+test_linear_programming.adb
+test_lists.adb
+test_matchings.adb
+test_math_pack.adb
+test_matrices.adb
+test_multiple_key_bags.adb
+test_permutations.adb
+test_polynomials.adb
+test_prime_numbers.adb
+test_protected_bags.adb
+test_protected_tables.adb
+test_queues.adb
+test_quick_sort.adb
+test_random.adb
+test_random_generator_period.adb
+test_read_write_semaphore.adb
+test_string_handler.adb
+test_tables.adb
+test_user_interface.adb
+test_vms_file_names.adb
+
+   Test programs. Generally not very clean.
+
+text_io_streams.adb
+text_io_streams.ads
+text_stream_definitions.ads
+
+   Definition of Text_IO as a stream of characters for use by
+   Ada_Lexical_Analyzer.
+
+the_random_generator.ads
+
+   Instance of the random generator.
+
+truncation_functions.adb
+truncation_functions.ads
+
+   Generic truncation functions (float, fixed) -> integer.
+
+two_key_bags.adb
+two_key_bags.ads
+
+   Simplifed version of Bags with two keys instead of one.
+
+unbounded_string_text_io.adb
+unbounded_string_text_io.ads
+
+   Text_IO add-ons for unbounded strings.
+
+user_interface.adb
+user_interface.ads
+
+   Very simple user interface for getting numbers and strings with
+   prompts, through Text_IO.
+
+varying_text.ads
+varying_text_io.ads
+
+   Instance of Generic_Varying_Text for Standard.String.
+
+vertex_arc.adb
+vertex_arc.ads
+
+   Definition of types Vertex and Arc for Graph_Handler.
+
+vms_file_names.adb
+vms_file_names.ads
+vms_logical_names.adb
+vms_logical_names.ads
+vms_system.adb
+vms_system.ads
+
+   VMS stuff.
+
+zap_tabs.adb
+
+   Program untabify text files.
+
+zpz_base_type.ads
+zpz_field-check_instantiation.adb
+zpz_field.adb
+zpz_field.ads
+zpz_field_exceptions.ads
+
+   Packages defining operations in the Z/pZ field, used for
+   Galois_Fields and BCH codes.

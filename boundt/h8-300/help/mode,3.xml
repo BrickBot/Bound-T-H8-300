@@ -1,0 +1,4 @@
+<option-value option="mode" value="3">
+Single-chip mode (no external memory).
+Implies <option-value-ref option="stack" value="internal"/>.
+</option-value>

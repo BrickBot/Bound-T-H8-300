@@ -1,0 +1,4 @@
+<option-value option="show" value="cells">
+The cells (variables) that are the input to and the output from the
+computation in the subprogram.
+</option-value>

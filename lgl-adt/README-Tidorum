@@ -1,0 +1,15 @@
+The files in this directory are extracted from the EPFL-LGL Abstract Data
+Types library (see the files Copyright, README and conditions.txt) for use
+in the Bound-T execution time analysis tool, originally developed by Space
+Systems Finland Ltd and currently developed and sold by Tidorum Ltd.
+
+For easier use with the GNU Ada compiler (GNAT), the files were renamed
+to follow the GNAT convention where the suffix ".ads" is used for a
+declaration file (spec file) and the suffix ".adb" for a body file.
+
+In addition, Tidorum has made a few minor modifications in the content
+of some of these files, as shown by the version history log. Tidorum claims
+no copyright for these modifications.
+
+Niklas Holsti
+Tidorum Ltd.

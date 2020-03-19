@@ -1,0 +1,5 @@
+<option option="file_match">
+Defines how the assertion-mapper compares actual source-file
+names to file-names written in assertions, with reference to
+the directory path component (see also <option-ref option="file_case"/>).
+</option>

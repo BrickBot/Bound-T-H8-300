@@ -1,0 +1,7 @@
+<option option="max_par_depth">
+The bounds of a loop in a subprogram, and other dynamic behaviour of
+the subprogram, may depend on actual parameter values passed from the
+caller(s), perhaps over many call levels. This option sets the maximum
+number of call levels over which parameter values are analysed to find
+such call-dependent loop-bounds and other dynamic behaviour.
+</option>

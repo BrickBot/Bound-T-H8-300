@@ -1,0 +1,4 @@
+<option option="warn line_scope">
+A source-line locus which lies in an unknown
+subprogram, or in an unknown source file.
+</option>

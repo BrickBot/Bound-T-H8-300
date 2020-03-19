@@ -1,0 +1,7 @@
+<option option="calc_max">
+Specifies the maximum literal value to be included as such
+in the arithmetic analysis. Values with a larger magnitude
+are considered opaque (unknown). In some cases, the limit
+may have to be reduced from the default value to avoid
+overflow in the Omega Calculator.
+</option>

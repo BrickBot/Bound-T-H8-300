@@ -1,0 +1,5 @@
+<option option="class_dot">
+The name of the DOT file that will hold the drawing of the
+class diagram from an UBROF executable file, when the option
+<option-ref option="draw_classes"/> is active.
+</option>

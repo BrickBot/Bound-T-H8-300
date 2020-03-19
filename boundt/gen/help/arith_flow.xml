@@ -1,0 +1,5 @@
+<option option="arith_flow">
+Enables the detection of infeasible flow-graph edges during the
+arithmetic analysis. Relevant only if arithmetic analysis is done (for
+other reasons). See <option-ref option="arithmetic"/>.
+</option>

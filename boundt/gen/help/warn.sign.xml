@@ -1,0 +1,5 @@
+<option option="warn sign">
+A literal (static constant, immediate) value with an
+uncertain sign, which could thus be modelled as a positive
+(unsigned) number or as a negative number.
+</option>

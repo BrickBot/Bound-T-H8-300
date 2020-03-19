@@ -1,0 +1,4 @@
+<option option="draw deeply">
+Draw flow-graphs for all the subprograms in the call-tree, not
+just for the root subprograms.
+</option>

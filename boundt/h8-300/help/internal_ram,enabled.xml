@@ -1,0 +1,4 @@
+<option-value option="internal_ram" value="enabled">
+The internal RAM is enabled (bit SYSCR.RAME = 1).
+Internal RAM is faster than external RAM.
+</option-value>

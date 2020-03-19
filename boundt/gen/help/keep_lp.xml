@@ -1,0 +1,8 @@
+<option option="keep_lp">
+Diagnostic option that keeps, as files, the input and output data
+streams to and from the lp_solve program as used in the ILP phase of
+the IPET calculation. The files are named by a prefix, given by the
+options <option-ref option="lp_input_prefix"/> and
+<option-ref option="lp_output_prefix"/>, followed by a
+sequential number. See also <option-ref option="keep_files"/>.
+</option>

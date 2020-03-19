@@ -1,0 +1,199 @@
+-- Programs.Execution.Paths (decl)
+--
+-- Determining the possible execution paths in a subprogram
+-- tree with bounded loops.
+--
+-- A component of the Bound-T Worst-Case Execution Time Tool.
+--
+-------------------------------------------------------------------------------
+-- Copyright (c) 1999 .. 2015 Tidorum Ltd
+-- All rights reserved.
+--
+-- Redistribution and use in source and binary forms, with or without
+-- modification, are permitted provided that the following conditions are met:
+--
+-- 1. Redistributions of source code must retain the above copyright notice, this
+--    list of conditions and the following disclaimer.
+-- 2. Redistributions in binary form must reproduce the above copyright notice,
+--    this list of conditions and the following disclaimer in the documentation
+--    and/or other materials provided with the distribution.
+--
+-- This software is provided by the copyright holders and contributors "as is" and
+-- any express or implied warranties, including, but not limited to, the implied
+-- warranties of merchantability and fitness for a particular purpose are
+-- disclaimed. In no event shall the copyright owner or contributors be liable for
+-- any direct, indirect, incidental, special, exemplary, or consequential damages
+-- (including, but not limited to, procurement of substitute goods or services;
+-- loss of use, data, or profits; or business interruption) however caused and
+-- on any theory of liability, whether in contract, strict liability, or tort
+-- (including negligence or otherwise) arising in any way out of the use of this
+-- software, even if advised of the possibility of such damage.
+--
+-- Other modules (files) of this software composition should contain their
+-- own copyright statements, which may have different copyright and usage
+-- conditions. The above conditions apply to this file.
+-------------------------------------------------------------------------------
+--
+-- $Revision: 1.5 $
+-- $Date: 2015/10/24 19:36:51 $
+--
+-- $Log: programs-execution-paths.ads,v $
+-- Revision 1.5  2015/10/24 19:36:51  niklas
+-- Moved to free licence.
+--
+-- Revision 1.4  2008-07-23 09:07:16  niklas
+-- BT-CH-0139: Fix recursion in Programs.Execution.Paths.
+--
+-- Revision 1.3  2007/12/17 13:54:39  niklas
+-- BT-CH-0098: Assertions on stack usage and final stack height, etc.
+--
+-- Revision 1.2  2004/05/01 10:19:23  niklas
+-- First Tidorum version.
+-- Updated the provided interface to make use of the fact that the target
+-- program and assertion map for given Execution Bounds can now be reached
+-- via the Bounds_Ref so separate Program_T and Assertion_Set_T parameters
+-- are no longer needed. Likewise, updated the implementation to take node
+-- and edge times from the Execution Bounds and to compute them only when
+-- not yet done for these bounds.
+-- Removed the procedure Find_All_Worst_Cases because it is no longer
+-- needed in the ERC32 floating point blocking analysis.
+-- Added Decoder-defined optional and additional ILP variables and terms
+-- for the objective function.
+-- Added support for eternal loops: if the loop bound is not asserted,
+-- assume that the loop repeats zero times, which excludes it.
+-- Added exclusion of parts of the flow-graph that are marked infeasible.
+-- Added optional Trace output to some operations.
+--
+-- Revision 1.1  2003/03/11 08:30:51  holsti
+-- First version renamed to be a child of Programs.Execution.
+-- Added Find_All_Worst_Cases for use with the ERC32.
+-- Added Find_Worst_Case for a call-path as a public operation.
+-- Using new types and services of the ILP package.
+--
+
+
+package Programs.Execution.Paths is
+
+
+   procedure Find_Worst_Case (
+      Bounds   : in Bounds_Ref;
+      Avoiding : in Flow.Step_List_T);
+   --
+   -- Calculates the worst-case execution time for the subprogram
+   -- covered by the given execution Bounds, if not already computed,
+   -- but Avoiding some steps in the subprogram (now known to be
+   -- infeasible for some reason).
+   --
+   -- The procedure first computes the per-edge and per-node execution
+   -- times if these are not yet present in the Bounds.
+   --
+   -- Assumes that:
+   --
+   -- > The Bounds suffice to bound the execution paths.
+   --
+   -- > The Bounds contain worst-case execution times for
+   --   all calls in the subprogram.
+   --
+   -- > The Bounds do not represent an asserted execution time (such
+   --   bounds have no information from which to compute a worst-case
+   --   path or time).
+   --
+   -- To put it simply, this procedure assumes that the time-state of
+   -- the given Bounds is Computable, and does nothing otherwise.
+   --
+   -- Note the following:
+   --
+   -- > This operation is not recursive. It assumes that the
+   --   worst-case times for the callees have been found earlier
+   --   and stored (nested) in the Bounds.
+   --
+   -- > This operation computes a new worst-case path and time
+   --   only if the Bounds do not already contain a valid path and
+   --   time, in other words only if Time_State (Bounds) is Computable,
+   --   not for a time-state Computed or any other time-state.
+   --   However, if the per-edge or per-node times are not bounded,
+   --   then this operation will compute and bound them, which will
+   --   invalidate any existing time-bound, so the operation will then
+   --   compute a new worst-case path and time.
+   --
+   -- The operation proceeds in three steps:
+   --
+   --   1. If the Bounds do not contain Step_Edge_Times, the operation
+   --      uses Flow.Execution.Step_Edge_Times to fetch the per-edge
+   --      times from the flow-graph, and stores them in Bounds. As
+   --      a side effect, this erases any Node_Times and any worst-
+   --      case path and time bounds in the Bounds
+   --
+   --   2. If the Bounds do not contain Node_Times (which is the case
+   --      also if step 1 computed new per-edge times), the operation
+   --      uses Flow.Execution.Node_Times to compute them and stores
+   --      them in the Bounds. As a side effect, this erases any worst-
+   --      case path and time bounds in the Bounds.
+   --
+   --   3. Finally, if the Bounds do not contain a bound on the worst-
+   --      case execution time, the operation uses the Implicit Path
+   --      Enumeration Technique (IPET), based on Integer Linear
+   --      Programming, to find the worst-case path (or one of them)
+   --      and the upper bound on execution time.
+   --
+   -- The Bounds can be universal or depend on a call path.
+   --
+   -- The resulting worst-case times are displayed on standard output.
+   -- The worst-case path, if calculated, is stored as worst-case
+   -- execution counts for nodes and edges in the Bounds.
+   -- The worst-case execution time is also stored in Bounds.
+   -- The Bounds are marked to show that the time-calculation phase
+   -- has been applied.
+
+
+   procedure Find_Worst_Case_Deeply (Call : in Call_Bounds_T);
+   --
+   -- Calculates the worst case execution time for a given call and
+   -- all its lower-level callees, when their execution paths are
+   -- bounded but their execution time is not (yet) bounded. Does
+   -- nothing if this time-calculation phase has already been applied
+   -- to these execution bounds.
+   --
+   -- If not done before, also computes the per-edge and per-node
+   -- execution times and stores them in the relevant execution bounds.
+   -- The same three-step process is used as in Find_Worst_Case above.
+   -- Marks all processed execution bounds to show that the time-
+   -- calculation phase has been applied.
+   --
+   -- The resulting worst-case times are displayed on standard output.
+   -- The worst case path is stored as worst case execution counts
+   -- for nodes and edges in the Bounds, and the worst-case time
+   -- is also stored in Bounds.
+   --
+   -- This operation works recursively, bottom-up in the bounds
+   -- (call) hierarchy.
+
+
+   procedure Find_Worst_Case (
+      Call       : in Call_T;
+      Bounds_Set : in Bounds_Set_T);
+   --
+   -- Determines the worst-case execution path of the given call
+   -- and all its callees, direct or indirect, if their execution
+   -- paths are bounded but their execution time is not (yet)
+   -- calculated.
+   --
+   -- If not done before, also computes the per-edge and per-node
+   -- execution times and stores them in the relevant execution bounds.
+   -- The same three-step process is used as in Find_Worst_Case, above.
+   --
+   -- The resulting worst-case times are displayed on standard output.
+   -- All the results (WCET and paths) are stored in the execution
+   -- bounds associated with the call and its callees.
+   --
+   -- Note that these bounds can be universal, call-specific or
+   -- path-specific, even if they are accessed via execution
+   -- bounds associated with a call.
+   --
+   -- This operation invokes Find_Worst_Case_Deeply and so works
+   -- recursively, bottom-up in the bounds (call) hierarchy, and marks
+   -- all processed execution bounds to show that the time-calculation
+   -- phase has been applied.
+
+
+end Programs.Execution.Paths;

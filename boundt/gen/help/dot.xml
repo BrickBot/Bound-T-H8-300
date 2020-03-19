@@ -1,0 +1,7 @@
+<option option="dot">
+Enables the drawing of call-graphs and control-flow graphs, placing
+all graphs in one and the same file. The name of this file is given as
+the value of the <option-ref option="dot"/> option. The drawings are
+in the textual DOT (GraphViz) form. See also the option
+<option-ref option="dot_dir"/>. By default no drawings are made.
+</option>

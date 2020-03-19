@@ -1,0 +1,5 @@
+<option option="stack_path">
+Same as <option-ref option="stack"/>, but reports also the
+call-path that uses the highest stack. There may be several
+such paths; only one of them is reported.
+</option>

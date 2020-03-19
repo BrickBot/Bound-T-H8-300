@@ -1,0 +1,6 @@
+<option option="trace ubrof_class_members">
+The members (components) of the classes (class types) defined
+in the UBROF executable file under analysis. This option is
+relevant only if the option <prefixed-option-ref prefix="trace"
+option="classes"/> is on.
+</option>

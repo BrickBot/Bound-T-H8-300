@@ -1,0 +1,6 @@
+<option-value option="loop" value="full">
+Analyse all induction variables jointly, for all
+kinds of relations (&lt;, &lt;=, =, &gt;=, &gt;).
+Also analyse each counter variable separately for equality
+relations of the form "counter<nbsp/>=<nbsp/>constant".
+</option-value>

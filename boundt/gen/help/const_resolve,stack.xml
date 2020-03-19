@@ -1,0 +1,4 @@
+<option-value option="const_resolve" value="stack">
+The amount of stack memory used by a subprogram at relevant
+points within the subprogram.
+</option-value>

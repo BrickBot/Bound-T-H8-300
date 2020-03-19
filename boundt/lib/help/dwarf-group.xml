@@ -1,0 +1,3 @@
+<option-group name="dwarf">
+Options for processing DWARF debugging information.
+</option-group>

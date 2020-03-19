@@ -1,0 +1,4 @@
+<option option="trace unused">
+Subprograms and calls known (asserted or deduced) to be
+unused in any execution that is included in the analysis.
+</option>

@@ -1,0 +1,7 @@
+<option option="patch">
+Specifies (the name of) a patch file to be read and used to alter
+the memory image of the target program before the program is analysed.
+By default no patch files are used. This option can be used multiple
+times to specify multiple patch files. Each use of
+<option-ref option="patch"/> adds one file-name to the set.
+</option>

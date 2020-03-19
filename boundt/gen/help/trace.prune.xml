@@ -1,0 +1,3 @@
+<option option="trace prune">
+Pruning dead (unreachable) parts from flow graphs.
+</option>

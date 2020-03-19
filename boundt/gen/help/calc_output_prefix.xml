@@ -1,0 +1,6 @@
+<option option="calc_output_prefix">
+The initial part (prefix) of the names of the log files that will preserve the
+output from the Omega Calculator when the option <option-ref
+option="keep_files"/> or <option-ref option="keep_om"/> is used. The rest of the
+file name will be a sequential number.
+</option>

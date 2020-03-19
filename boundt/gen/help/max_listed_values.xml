@@ -1,0 +1,10 @@
+<option option="max_listed_values">
+The maximum number of discrete values that can be listed (enumerated)
+from the computed bounds on some expression. Such lists are used
+mainly to resolve dynamic jumps and mainly switch/case statements,
+where this number sets a limit on the number of case branches enumerated
+from the bounds deduced for the switch index expression.
+This limit guards against generating over-estimated control-flow
+graphs with millions of branches, which could otherwise happen
+if the analysis cannot find good bounds on such expressions.
+</option>

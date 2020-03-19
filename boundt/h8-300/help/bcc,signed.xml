@@ -1,0 +1,6 @@
+<option-value option="bcc" value="signed">
+Model a signed condition as an unknown condition. This prevents
+the automatic deduction of loop iteration bounds for loops that
+use signed condition-codes in the termination test, which usually
+happens if the loop counter has a signed type.
+</option-value>

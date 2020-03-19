@@ -1,0 +1,5 @@
+<option option="dwarf_loc_list">
+The maximum number of alternative or temporary
+locations for a variable, when the variable is in different
+locations at different times.
+</option>

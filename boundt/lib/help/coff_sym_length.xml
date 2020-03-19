@@ -1,0 +1,4 @@
+<option option="coff_sym_length">
+The length, in octets, to be assumed for symbol-table entries in
+a COFF input file.
+</option>

@@ -1,0 +1,72 @@
+These are the component families developed by the Software Engineering
+Laboratory at the Swiss Federal Institute of Technology, Lausanne
+(the French name of the lab is LGL, at the EPFL).
+
+Each subdirectory holds a family of components (e.g. ADT holds the Abstract
+Data Types) and the latest corresponding compressed tarfile (e.g. ADT.tar.Z)
+is usually available.
+
+--MK, 01.05.92
+
+To install the components:
+
+mkdir Components
+setenv LGLCOMPONENTS $PWD/Components
+mkdir Gramact
+setenv GRAMACTHOME $PWD/Gramact
+
+get the compressed tar files:
+
+ADT.tar.Z
+ADT_Test.tar.Z (optional)
+Text_Processing.tar.Z
+Text_Processing_Test.tar.Z (optional)
+System.tar.Z
+System_Test.tar.Z (optional)
+System_Examples.tar.Z (optional)
+Gramact.tar.Z
+
+and put them into $LGLCOMPONENTS
+
+# For now, you have to compile each family
+# separately. Compiler may be either Apex or Verdix.
+# The compilation order given below should be respected.
+
+cd $LGLCOMPONENTS
+
+uncompress ADT.tar.Z; tar xvf ADT.tar; rm ADT.tar
+cd ADT/Files; make Compiler
+
+uncompress ADT_Test.tar.Z; tar xvf ADT_Test.tar; rm ADT_Test.tar
+cd ADT/Test/Files; make Compiler
+
+uncompress Text_Processing.tar.Z; tar xvf Text_Processing.tar; \
+rm Text_Processing.tar
+cd Text_Processing/Files; make Compiler
+
+uncompress Text_Processing_Test.tar.Z; tar xvf Text_Processing_Test.tar; \
+rm Text_Processing_Test.tar
+cd Text_Processing/Test/Files; make Compiler
+
+uncompress System.tar.Z; tar xvf System.tar; rm System.tar
+cd System; make Compiler
+
+uncompress System_Tests.tar.Z; tar xvf System_Tests.tar; rm System_Tests.tar
+cd System/Tests; make Compiler
+
+uncompress System_Examples.tar.Z; tar xvf System_Examples.tar; \
+rm System_Examples.tar
+cd System/Examples; make Compiler
+
+uncompress Gramact.tar.Z; tar xvf Gramact.tar; rm Gramact.tar
+cd Gramact/Files; make Compiler
+
+
+# To create the tar files in your $LGLCOMPONENTS directory do:
+foreach f ( \
+	ADT/Files ADT/Test/Files \
+	Text_Processing/Files Text_Processing/Test/Files \
+	System System/Tests System/Examples \
+	Gramact/Files )
+  cd $f;  make feather 
+end

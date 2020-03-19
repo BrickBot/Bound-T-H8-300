@@ -1,0 +1,8 @@
+<option option="table">
+Outputs a table showing how the execution-time bounds for
+each root subprogram are made up from bounds on lower-level callee
+subprograms and the number of calls. Relevant only for
+<option-ref option="time"/> analysis.
+The option <option-ref option="stack_path"/> has a similar
+role for stack-usage analysis.
+</option>

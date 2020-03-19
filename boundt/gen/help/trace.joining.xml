@@ -1,0 +1,4 @@
+<option option="trace joining">
+Joining the effects of sequences of flow-graph steps,
+during the "live variable" analysis, in detail.
+</option>

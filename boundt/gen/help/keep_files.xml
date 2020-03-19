@@ -1,0 +1,5 @@
+<option option="keep_files">
+Diagnostic option that keeps, as files, the input and output data
+streams to and from the auxiliary programs, combining the two options
+<option-ref option="keep_lp"/> and <option-ref option="keep_om"/>.
+</option>

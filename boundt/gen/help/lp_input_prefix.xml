@@ -1,0 +1,6 @@
+<option option="lp_input_prefix">
+The initial part (prefix) of the names of the files that will hold the
+input for the lp_solve program when the option
+<option-ref option="keep_files"/> or <option-ref option="keep_lp"/>
+is used. The rest of the file name will be a sequential number.
+</option>

@@ -1,0 +1,7 @@
+<option option="max_anatime">
+Aborts the analysis if it has not finished within the given duration
+(wall-clock time, seconds) set as the value of this option. The
+duration can be a decimal number, for example 1.5 seconds. On some
+host platforms this option may not work, in which case the option has
+no effect.
+</option>

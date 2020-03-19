@@ -1,0 +1,3 @@
+<option option="trace dead">
+Dead assignments found in the "live variable" analysis.
+</option>

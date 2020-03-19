@@ -1,0 +1,108 @@
+
+      PL ("   -srec=<filename>");
+      PL ("      Loads more code and/or data in S-record form from");
+      PL ("      the named file, adding to the code and data read");
+      PL ("      from the main executable file (as named on the");
+      PL ("      command-line after the options).");
+
+      New_Line;
+
+      PL ("   -sym=<filename>");
+      PL ("      Loads more symbol definitions from the named file.");
+      PL ("      For example, these symbols can define names for");
+      PL ("      subprograms loaded from an S-record file.");
+
+      New_Line;
+
+      Format.Opt.List_Options;
+
+      if Processor.Opt.Device /= null then
+
+         H8_300.Devices.List_Options (Processor.Opt.Device.all);
+
+      else
+
+         PL (
+              "Use "
+            & """-device=<name> -help"""
+            & " to list also device-specific options.");
+
+      end if;
+
+      Decoder.IAR.Opt.List_Options;
+
+      -- TBA Decoder.GCC.List_Options, if needed.
+
+   end List_Options;
+
+
+   procedure List_Trace_Options
+   is
+      use Ada.Text_IO;
+   begin
+
+      New_Line;
+      PL ("       Trace items specific to " & Processor.Name & ':');
+      New_Line;
+      Format.Opt.List_Trace_Options;
+
+   end List_Trace_Options;
+
+
+   procedure List_Warn_Options
+   is
+   begin
+
+      null;
+
+   end List_Warn_Options;
+
+
+   procedure Finish
+   is
+      use type H8_300.Devices.Device_Ref;
+   begin
+
+      Decoder.IAR.Opt.Finish;
+
+      if Processor.Opt.Device = null then
+
+         Output.Error ("No -device was specified.");
+
+         raise Options.Argument_Error;
+
+      end if;
+
+      H8_300.Devices.Initialize (Processor.Opt.Device.all);
+
+   end Finish;
+
+
+end Decoder.Opt;
+
+
+   procedure List_Options
+   is
+      use Ada.Text_IO;
+   begin
+
+      New_Line;
+      Put_Line ("Options for users of the IAR C Compiler:");
+      New_Line;
+      Put_Line ("   -ur0, -ur1, -ur2, -ur3");
+      Put_Line ("      Specifies which registers can be used for passing");
+      Put_Line ("      parameters. Use the same option as for the compiler.");
+      Put_Line ("      The default is -ur"
+                     & Output.Image (Integer'(Default_Param_Regs)) & '.');
+      New_Line;
+      Put_Line ("   -uu0, -uu1, -uu2, -uu3, -uu4");
+      Put_Line ("      Specifies which registers can be changed (trashed)");
+      Put_Line ("      by a callee. Use the same option as for the compiler.");
+      Put_Line ("      The default is -uu"
+                     & Output.Image (Integer'(Default_Trash_Regs)) & '.');
+      New_Line;
+
+   end List_Options;
+
+
+

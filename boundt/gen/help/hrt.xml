@@ -1,0 +1,34 @@
+<option option="hrt">
+<p>Selects the "HRT mode" of operation for Bound-T. The target program is assumed
+to consist of some concurrent threads and some protected objects with mutually
+exclusive operations, as listed in the "TPO file". Use Bound-T with a command
+line of this form:
+</p>
+<p><dl>
+<dt>boundt_&lt;target&gt; <option-ref option="hrt"/> [options] TPO-file</dt>
+</dl>
+</p>
+<p>
+Arguments:
+</p>
+<p><dl>
+<dt><option-ref option="hrt"/></dt>
+<dd>The option to invoke HRT mode. It does not have to be the
+first option.
+</dd>
+<dt>[options]</dt>
+<dd>Other options to control and guide the analysis.
+</dd>
+<dt>TPO-file</dt>
+<dd>The name of the Threads and Protected Objects file.
+</dd>
+</dl>
+</p>
+<p>Note that the command line does not name any subprograms to
+be analysed, since this is defined by the contents of the TPO file.
+</p>
+<p>For more guidance, for example on the format of the TPO file, please
+refer to the manual "Using Bound-T in HRT Mode", document reference
+TR-UM-002, at http://www.bound-t.com/manuals/hrt-manual.pdf.
+</p>
+</option>

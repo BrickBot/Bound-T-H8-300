@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+#  run_oc: Run oc (Omega Calculator), capturing input and output into log-files.
+#
+# A component of the Bound-T Worst-Case Execution Time Tool.
+# Copyright (c) 2004 Tidorum Ltd.
+# 
+# $RCSfile: run_oc,v $
+# $Revision: 1.1 $
+# $Date: 2004-05-15 13:37:37 $
+# $Name:  $
+# 
+# $Log: run_oc,v $
+# Revision 1.1  2004-05-15 13:37:37  niklas
+# First Tidorum version.
+#
+
+
+if [ "$#" = "2" ]; then
+
+   tee $1 | oc | tee $2
+
+else
+
+   oc
+
+fi

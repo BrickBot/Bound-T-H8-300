@@ -1,0 +1,4 @@
+<option option="trace refine_path">
+All items refined by constant propagation, step by step
+in the evaluation of expressions containing constants.
+</option>

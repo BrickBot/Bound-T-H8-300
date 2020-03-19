@@ -1,0 +1,5 @@
+<option-value option="show" value="full">
+A meta-item that selects all other <option-ref option="show"/>
+items except <option-value-ref option="show" value="callers"/>
+and <option-value-ref option="show" value="deeply"/>.
+</option-value>

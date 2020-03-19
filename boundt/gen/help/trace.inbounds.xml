@@ -1,0 +1,3 @@
+<option option="trace inbounds">
+Bounds on inputs for calls, when known.
+</option>

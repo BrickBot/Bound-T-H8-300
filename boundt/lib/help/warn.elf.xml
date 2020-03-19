@@ -1,0 +1,3 @@
+<option option="warn elf">
+Minor ELF problems such as unknown section types.
+</option>

@@ -1,0 +1,12 @@
+<option option="help_dir">
+Defines (the name of) an additional directory of "help" files for use
+by the the <option-ref option="help"/> option. The <option-ref
+option="help_dir"/> option can be used multiple times to specify
+multiple help directories. Each use of <option-ref option="help_dir"/>
+adds one directory to the list. The search for a help file uses these
+directories in the reverse order, looking first in the directory
+specified in the last, right-most <option-ref option="help_dir"/> option.
+If the help file is not found in any of these directores, the
+search looks (as usual) in the directory tree defined by the
+environment variable BOUNDT_HELP.
+</option>

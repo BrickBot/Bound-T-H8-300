@@ -1,0 +1,4 @@
+<option option="version">
+Shows the version of Bound-T in use, including the name of
+the target processor and the version number of Bound-T.
+</option>

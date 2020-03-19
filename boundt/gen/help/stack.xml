@@ -1,0 +1,4 @@
+<option option="stack">
+Whether to analyse the worst-case stack usage (for each subprogram
+given in the arguments). See also <option-ref option="stack_path"/>.
+</option>

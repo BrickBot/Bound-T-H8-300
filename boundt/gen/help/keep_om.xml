@@ -1,0 +1,8 @@
+<option option="keep_om">
+Diagnostic option that keeps, as files, the input and output data
+streams to and from the Omega Calculator program as used in the
+arithmetic analysis phase. The files are named by a prefix, given by
+the options <option-ref option="calc_input_prefix"/> and
+<option-ref option="calc_output_prefix"/>, followed by a
+sequential number. See also <option-ref option="keep_files"/>.
+</option>

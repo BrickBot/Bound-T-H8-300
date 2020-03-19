@@ -1,0 +1,6 @@
+<option option="format">
+Specifies the format that Bound-T should use when reading
+the executable target-program file. These format values can
+also be given as stand-alone options, for example 
+<option-ref option="coff"/>.
+</option>

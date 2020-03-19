@@ -1,0 +1,6 @@
+<option option="model_iter">
+Limits the number of times a subprogram is reanalysed in response to
+an earlier analysis that updated the model of the computation that the
+subprogram performs, for example by discovering new, dynamically
+addressed variables.
+</option>

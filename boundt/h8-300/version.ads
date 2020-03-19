@@ -1,0 +1,205 @@
+-- Version (decl)
+--
+-- Documents the version of Bound-T for the Renesas H8/300 target.
+--
+-- Authors:
+--    Samuel Petersson, Mälardalen University
+--    Niklas Holsti, Tidorum Ltd
+--
+-- A component of the Bound-T Worst-Case Execution Time Tool.
+--
+-------------------------------------------------------------------------------
+-- Copyright (c) 1999 .. 2015 Tidorum Ltd
+-- All rights reserved.
+--
+-- Redistribution and use in source and binary forms, with or without
+-- modification, are permitted provided that the following conditions are met:
+--
+-- 1. Redistributions of source code must retain the above copyright notice, this
+--    list of conditions and the following disclaimer.
+-- 2. Redistributions in binary form must reproduce the above copyright notice,
+--    this list of conditions and the following disclaimer in the documentation
+--    and/or other materials provided with the distribution.
+--
+-- This software is provided by the copyright holders and contributors "as is" and
+-- any express or implied warranties, including, but not limited to, the implied
+-- warranties of merchantability and fitness for a particular purpose are
+-- disclaimed. In no event shall the copyright owner or contributors be liable for
+-- any direct, indirect, incidental, special, exemplary, or consequential damages
+-- (including, but not limited to, procurement of substitute goods or services;
+-- loss of use, data, or profits; or business interruption) however caused and
+-- on any theory of liability, whether in contract, strict liability, or tort
+-- (including negligence or otherwise) arising in any way out of the use of this
+-- software, even if advised of the possibility of such damage.
+--
+-- Other modules (files) of this software composition should contain their
+-- own copyright statements, which may have different copyright and usage
+-- conditions. The above conditions apply to this file.
+-------------------------------------------------------------------------------
+--
+-- $Revision: 1.43 $
+-- $Date: 2015/10/26 22:19:15 $
+--
+-- $Log: version.ads,v $
+-- Revision 1.43  2015/10/26 22:19:15  niklas
+-- Version 4b, and moved to free open-source licence.
+--
+-- Revision 1.42  2010/11/30 17:21:00  niklas
+-- Version 4a3, minor gen and lib updates, -host_version.
+--
+-- Revision 1.41  2010-02-25 12:22:25  niklas
+-- Version 4a2.
+--
+-- Revision 1.40  2010-02-11 11:22:01  niklas
+-- Version 4a1, including BT-CH-219.
+--
+-- Revision 1.39  2009-12-29 13:33:43  niklas
+-- Version 4a, updated per BT-CH-0205.
+--
+-- Revision 1.38  2009-12-02 14:18:26  niklas
+-- Version 4, for BT-CH-0188.
+--
+-- Revision 1.37.2.1  2009-10-20 16:54:16  niklas
+-- Version 3a2a, correcting BT-NC-0201.
+--
+-- Revision 1.37  2009-10-08 07:58:00  niklas
+-- Version 3a2, for BT-CH-0183.
+--
+-- Revision 1.36  2009-07-15 12:03:51  niklas
+-- Version 3a1, first version for Debian Lenny.
+--
+-- Revision 1.35  2008-10-29 14:48:53  niklas
+-- Version 3a.
+--
+-- Revision 1.34  2008/05/03 11:15:30  niklas
+-- Version 2e, for BT-CH-126.
+--
+-- Revision 1.33  2008/04/29 20:14:57  niklas
+-- Version 2d, up to and including BT-CH-0125.
+--
+-- Revision 1.32  2007/12/27 23:12:33  niklas
+-- BT-CH-0104: S-record program format for Bound-T/H8-300.
+--
+-- Revision 1.31  2007/05/03 07:43:50  niklas
+-- Version 2c6.
+--
+-- Revision 1.30  2007/03/29 15:19:06  niklas
+-- Version 2c5X1, for BT-CH-0056.
+--
+-- Revision 1.29  2007/03/22 18:51:19  niklas
+-- Version 2c5, for BT-CH-0053.
+--
+-- Revision 1.28  2007/02/14 11:50:19  niklas
+-- Version 2c4 for BT-CH-044.
+--
+-- Revision 1.27  2006/11/28 19:23:36  niklas
+-- Version 2c2. Updated for BT-CH-0037.
+--
+-- Revision 1.26  2006/11/05 21:19:38  niklas
+-- BT-CH-0036: Property BCC_Signed.
+--
+-- Revision 1.25  2006/11/04 08:56:26  niklas
+-- Version 2c for BT-CH-0034 and BT-CH-0035.
+--
+-- Revision 1.24  2006/10/31 10:31:57  niklas
+-- Version 2b9.
+--
+-- Revision 1.23  2006/10/19 11:21:01  niklas
+-- Version 2b8.
+--
+-- Revision 1.22  2006/10/14 14:02:51  niklas
+-- Version 2b7.
+--
+-- Revision 1.21  2006/09/26 08:22:00  Niklas
+-- Version 2b6.
+--
+-- Revision 1.20  2006/08/30 17:50:35  niklas
+-- Version 2b5. BT-CH-0027 corrects BT-NC-160.
+--
+-- Revision 1.19  2006/08/23 19:32:23  niklas
+-- Version 2b4: Updates for BT-CH-0025.
+--
+-- Revision 1.18  2006/08/22 13:59:15  niklas
+-- Version 2b3.
+--
+-- Revision 1.17  2006/08/22 11:09:02  niklas
+-- Version 2b2.
+--
+-- Revision 1.16  2006/02/06 14:50:13  niklas
+-- Version 2b1.
+--
+-- Revision 1.15  2006/02/04 09:15:55  niklas
+-- Version 2b. Also, clarified the description to avoid the
+-- metasymbol 'x', which might be confused with the marker 'X'
+-- for experimental versions.
+--
+-- Revision 1.14  2005/10/20 19:34:52  niklas
+-- Version 2a9, for BT-CH-0016.
+--
+-- Revision 1.13  2005/10/09 08:11:34  niklas
+-- Version 2a8X for BT-CH-0013.
+--
+-- Revision 1.12  2005/09/23 10:52:41  niklas
+-- Version 2a8 for BT-CH-0012.
+--
+-- Revision 1.11  2005/09/20 19:38:48  niklas
+-- BT-CH-0011.
+--
+-- Revision 1.10  2005/09/20 12:49:21  niklas
+-- Version 2a7 for BT-CH-0010.
+--
+-- Revision 1.9  2005/09/17 14:44:34  niklas
+-- Version 2a6 for BT-CH-0009.
+--
+-- Revision 1.8  2005/09/12 19:03:52  niklas
+-- BT-CH-0008: version 2a5.
+--
+-- Revision 1.7  2005/09/05 11:42:45  niklas
+-- Version 2a4 for BT-CH-0007.
+--
+-- Revision 1.6  2005/09/03 12:20:30  niklas
+-- BT-CH-0006.
+--
+-- Revision 1.5  2005/08/26 06:40:01  niklas
+-- Version 2a3.
+--
+-- Revision 1.4  2005/04/23 07:47:50  niklas
+-- Version 2a2.
+--
+-- Revision 1.3  2005/04/20 12:31:36  niklas
+-- Version 2a1X.
+--
+-- Revision 1.2  2005/04/20 06:57:04  niklas
+-- Version 2a1.
+--
+-- Revision 1.1  2004/06/16 07:41:40  niklas
+-- First version.
+--
+
+
+package Version is
+
+   Identifier : constant String := "4b";
+   --
+   -- Each released Bound-T executable shall be uniquely identified
+   -- by the combination of:
+   --
+   --  > Processor.Name, the target processor (and compiler/kernel)
+   --  > Version.Identifier, the version identifier.
+   --  > the host platform (not explicitly represented in the code)
+   --
+   -- The version identifier has the form "nmp", where
+   --    n   is the major version number (1, 2, 3, ...)
+   --    m   is the minor version key-letter (a, b, c, ...)
+   --    p   is a patch (very minor) version number (1, 2, 3, ...)
+   --        and is absent for the unpatched version "nm".
+   --
+   -- While a new version/patch is being developed, the Identifier
+   -- shall have a suffix "X" for "eXperimental", which may be followed
+   -- by a number or other info to distinguish different intermediate
+   -- versions. For example: "1aX" would be an experimental version
+   -- intermediate between "1a" and "1a1", and "1b3X" would lie
+   -- between "1b3" and "1b4" (or perhaps "1c").
+
+
+end Version;

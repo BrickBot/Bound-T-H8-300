@@ -1,0 +1,6 @@
+<option option="draw_class_functions">
+Whether to include the list of class function members as
+annotation in the box for each class, in the class hierarchy
+diagram drawing from an UBROF executable file, when the option
+<option-ref option="draw_classes"/> is active.
+</option>

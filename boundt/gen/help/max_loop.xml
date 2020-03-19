@@ -1,0 +1,11 @@
+<option option="max_loop">
+An upper limit on credible or useful loop iteration bounds.
+Sometimes Bound-T computes upper bounds on loop iterations
+that are far larger than the true bounds. For example, if the
+loop counter is 32 bits, Bound-T sometimes finds a loop-bound
+on the order of 2^31 or 2^32. If <option-ref option="max_loop"/>
+is set to a finite value, Bound-T ignores any larger computed
+loop-bound and (if possible) looks for sharper loop-bounds by
+context-specific analysis.
+The default value of this option depends on the target processor.
+</option>

@@ -1,0 +1,5 @@
+<option option="draw cond">
+Show the arithmetic condition of each edge, which is a
+necessary precondition for taking the edge during execution,
+but not always a sufficient condition.
+</option>

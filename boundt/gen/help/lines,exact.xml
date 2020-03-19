@@ -1,0 +1,4 @@
+<option-value option="lines" value="exact">
+Show a line number only if it is connected exactly
+to a relevant code address.
+</option-value>

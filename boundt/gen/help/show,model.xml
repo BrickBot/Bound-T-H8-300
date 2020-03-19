@@ -1,0 +1,4 @@
+<option-value option="show" value="model">
+The computation model for the flow-graph: the computational effect of
+each step (node) and the logical condition for each edge.
+</option-value>

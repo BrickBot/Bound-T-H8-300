@@ -1,0 +1,6 @@
+<option option="orig">
+Enables value-origin (copy propagation) analysis. Value-origin
+analysis is applied to subprograms after constant propagation. This
+analysis is useful for finding variables and registers that are
+invariant (saved and restored) over any execution of the subprogram.
+</option>

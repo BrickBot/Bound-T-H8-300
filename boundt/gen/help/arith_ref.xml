@@ -1,0 +1,4 @@
+<option option="arith_ref">
+Selects which dynamic data references (pointers to data)
+are subjected to arithmetic analysis.
+</option>

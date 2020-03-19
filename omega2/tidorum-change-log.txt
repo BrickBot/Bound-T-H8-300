@@ -1,0 +1,123 @@
+Tidorum's changes to Omega 2.1 for Bound-T needs
+------------------------------------------------
+
+Log started 2009-02-08.
+
+CVS tags use the form "Om<omega version>T<Tidorum version>".
+For example Om21T1 means Omega 2.1, Tidorum version 1.
+
+
+2009-11-14; CVS tag Om21T3.
+   Updates for compiling Omega Calculator under new MinGW
+   (gcc 4.4.0) with flex and bison from the GnuWin32 project.
+
+   basic/include/basic/String.h
+      MS-Windows does not support the standard 64-bit integer
+      format specifier %lld. Using %I64d" instead, depending on
+      the preprocessor definition of WIN32.
+
+   basic/include/basic/assert.h
+      Removed apparently useless or obnoxius definitions of
+      the _assert macro/statement.
+
+   basic/include/basic/util.h
+      Removed outdated WIN32-specific definitions of LONGLONG
+      and MAXLONGLONG.
+
+   omega_lib/include/omega/omega_core/oc.h
+      MS-Windows does not support the standard 64-bit integer
+      format specifier %lld, used for the 64-bit "coef_fmt".
+      Using %I64d" instead, depending on the preprocessor
+      definition of WIN32.
+
+   omega_lib/src/farkas.c
+      Removed outdated WIN32-specific definition of ONELONGLONG.
+
+2009-02-27
+   Updated Omega Calculator to use "coef_t" instead of "int",
+   thus allowing 64-bit calculations.
+   CVS tag: om2_tr_2.
+
+   omega_lib/include/omega/omega_core/oc.h
+      For each alternative definition of "coef_t", added also
+      a definition (#define) "a_to_coef" for the function that
+      parses a decimal digit string into a "coef_t" value.
+      For "int" it is atoi, for "long long" it is atoll.
+
+   omega_lib/include/omega/AST.h
+   omega_lib/src/AST.c
+      For all operations on Expr where a parameter represents
+      a coef_t, changed the parameter type from "int" to "coef_t".
+      In AST.c also changed printf statements to use the defined
+      "coef_fmt" instead of "%d".
+
+   omega_calc/src/parser.y
+      Changed the type of the INT_VALUE attribute from "int"
+      to "coef_t".
+
+   omega_calc/src/parser.l
+      Changed the rule for an integer literal to set INT_VALUE
+      from "a_to_coef", yielding a "coef_t", instead of "atoi",
+      yielding an "int".
+
+2009-02-12
+   Makefile.config
+      Added SPEED to the compilation options.
+
+   In omega_calc/src:
+
+   parser.y
+      Added "Tidorum" and the size of coef_t to the
+      greeting line. Observation: coef_t is 64 bits,
+      which should/may enable modular analysis of
+      32-bit arithmetic. Excellent.
+
+--
+
+Repetition of Tidorum changes to Omega 1.1, if necessary:
+From Tidorum's change log for this Omega version:
+
+2006-10-17
+   Makefile.config
+      Modified to build oc under MinGW with an older flex or
+      under Linux with a newer flex. This is handled with the
+      new variables YYFLAGS and LEXFLAGS, to be set on the make
+      command line (see make_oc_mingw.sh and make_oc_linux.sh).
+      Added the following options to COMPILER_CFLAGS:
+      -DOMIT_GETRUSAGE; MinGW has no include/sys/resource.h.
+      $(YYFLAGS); to accommodate different flex versions.
+
+   Makefile.rules
+      Changed flex option --always-interactive to $(LEXFLAGS)
+      where LEXFLAGS should be set on the make command line
+      according to the flex version in use.
+
+   make_oc_mingw.sh
+   make_oc_linux.sh
+      Added these brief scripts to call "make oc" with the
+      proper parameters for making oc under MinGW or Linux,
+      respectively. The difference is in the flex version.
+
+   In omega_calc/src:
+
+   parser.l
+      Reinstated definition of YY_ALWAYS_INTERACTIVE.
+      Reinstated declaration and initialization of yylineno,
+      optional on YY_ALWAYS_INTERACTIVE.
+
+   parser.y
+      Commented out the "assert(DebugFile)" in the SPEED case,
+      when DebugFile is opened on /dev/null. Under MinGW this
+      fopen seems to return zero, but writes to DebugFile are
+      indeed without effect (and no oc.out file is created).
+
+2006-10-10
+
+   omega_lib/include/omega/omega_core/oc.h
+      Increased maxVars from 200 to 300.
+
+   omega_lib/include/omega/omega_core/oc_i.h
+      Changed maxWildcards from 18 to 50.
+
+--
+$Id: tidorum-change-log.txt,v 1.4 2009/12/29 19:46:09 niklas Exp $

@@ -1,0 +1,5 @@
+<option option="calculator">
+The name (path) of the Omega Calculator program for solving
+Presburger Arithmetic constraints during the arithmetic-analysis
+phase.
+</option>

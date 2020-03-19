@@ -1,0 +1,6 @@
+<option option="assert">
+Specifies (the name of) an assertion file to be read. By default no
+assertion files are used. This option can be used multiple times to specify
+multiple assertion files. Each use of <option-ref option="assert"/> adds
+one file-name to the set.
+</option>

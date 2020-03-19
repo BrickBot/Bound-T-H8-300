@@ -1,0 +1,4 @@
+<option option="trace live_stat">
+The number of "live" and "dead" assignments found in the
+flow-graph by the "live variable" analysis.
+</option>

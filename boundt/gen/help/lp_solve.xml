@@ -1,0 +1,4 @@
+<option option="lp_solve">
+The name (path) of the lp_solve program for solving the Integer Linear
+Programming part of the IPET phase.
+</option>

@@ -1,0 +1,79 @@
+<option option="Options introduction">
+<p>Options for Bound-T are written on the Bound-T command
+line before the name of the target program file.
+An option begins with a hyphen, '-', followed by the name of
+the option. This is possibly followed by a value for the option.
+The option name and the value can be separated by an equal sign
+'=' or by white-space (but not both).
+</p>
+<p>
+Boolean-valued options, for example <option-ref option="verbose"/>,
+can be written with a value, for example "-verbose=true", or without a
+value, which implies a true value. Thus "-verbose" is the same as
+"-verbose=true". If the option name is prefixed with "-no_" or "-no-"
+this implies a false value. Thus "-no-verbose" is the same as
+"-verbose=false".
+</p>
+<p>
+There are also options with numerical (integer and floating-point)
+values, string values, and keyword values (a fixed set of
+option-specific strings, an enumerated type).
+</p>
+<p>
+Some options that take a string value represent cumulative sets of
+strings, for example sets of assertion-file names. Each occurrence
+of such an option on the command line adds a new string to the set.
+For example, each occurrence of the <option-ref option="assert"/>
+option, with a string value, adds one assertion file (name) to the
+set of assertion files for the analysis.
+</p>
+<p>
+Similarly, some options that take a keyword value represent sets of
+keywords (equivalently, sets of Boolean choices) and
+each occurrence of the option can add or remove keywords from the set
+while leaving other keywords in the set (equivalently, each occurrence
+of the option sets or resets some of the Boolean choices while leaving
+other choices unchanged).
+Such keyword options accept a comma-separated list of keywords
+or negated keywords (a negated keyword is a keyword prefixed with "no_"
+or "no-").
+For example, "-show bounds,no-loops" is equivalent to
+"-show bounds -show no-loops" and neither affects the
+setting of "-show spaces".
+</p>
+<p>
+There are also some collections of related options that are named
+with a common "prefix" followed by the actual name and value of the
+option. These prefixes are
+<option-ref option="draw"/>,
+<option-ref option="imp"/>,
+<option-ref option="trace"/>, and
+<option-ref option="warn"/>.
+Here, too, the prefix can be followed by a comma-separated list of
+prefixed option names and values, without repeating the prefix.
+For example, "-trace decode,calls" has the same effect as
+"-trace decode -trace calls" and neither has any effect on the setting
+of "-trace stack".
+</p>
+<p>The <option-ref option="help"/> option is a special command-line
+keyword that makes Bound-T describe the meaning of other options.
+It is used as follows:</p>
+<p>
+<nbsp/><nbsp/><nbsp/>boundt_&lt;target&gt; [options] -help [help arguments]
+</p>
+<p>
+Here the arguments are:
+</p>
+<p><dl>
+<dt>[options]</dt>
+<dd>Options to select a target device, a cross-compiler, et cetera,
+when there are device-specific or compiler-specific options.</dd>
+<dt>[help arguments]</dt>
+<dd>Zero, one, or two arguments to ask for help on specific options or
+subjects.</dd>
+</dl>
+</p>
+<p>
+For more information on -help, run Bound-T with the arguments "-help help".
+</p>
+</option>

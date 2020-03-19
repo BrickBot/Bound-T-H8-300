@@ -1,0 +1,3 @@
+<option option="read_ws">
+The number of wait-states assumed for reading external memory. 
+</option>

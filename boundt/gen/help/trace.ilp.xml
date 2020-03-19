@@ -1,0 +1,3 @@
+<option option="trace ilp">
+Show the inputs and outputs for lp_solve.
+</option>

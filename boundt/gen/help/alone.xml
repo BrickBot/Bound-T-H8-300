@@ -1,0 +1,6 @@
+<option option="alone">
+If set, the root subprogram(s) will be analysed alone, without
+analysing any callees (subprograms called from the root subprogram).
+If not set, the whole call-graph reached from the root subprogram(s)
+is analysed.
+</option>

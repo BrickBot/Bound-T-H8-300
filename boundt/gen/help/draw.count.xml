@@ -1,0 +1,4 @@
+<option option="draw count">
+Show the execution count of each node &amp; edge, as found
+by the worst-case execution count (IPET) calculation.
+</option>

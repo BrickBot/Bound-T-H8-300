@@ -1,0 +1,5 @@
+<option option="warn reach">
+Unreachable (dead) code, that is, a part of a flow-graph
+that cannot be executed because all paths that lead to it
+include at least one edge condition that is false.
+</option>

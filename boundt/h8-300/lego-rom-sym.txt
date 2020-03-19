@@ -1,0 +1,115 @@
+-- Symbols for Lego Mindstorms ROM routines, for feeding
+-- to the Bound-T static code analyser.
+--
+-- Extracted from Kekoa Proudfoot's ROM description and
+-- from librcx/lib/rom.h, with precedence given to the
+-- latter (librcx) when there were different symbols for
+-- the same address.
+--
+-- This file was created by Niklas Holsti at Tidorum Ltd.
+-- No copyright is claimed.
+--
+-- $Revision: 1.2 $
+-- $Date: 2015/10/26 21:25:59 $
+--
+subprogram rom|mul16                               0130
+subprogram rom|umod16                              014a
+subprogram rom|sdiv16                              0156
+subprogram rom|smod16                              0188
+subprogram rom|udiv16                              01be
+subprogram rom|mul32                               01fe
+subprogram rom|sdiv32                              026e
+subprogram rom|udiv32                              0306
+subprogram rom|init                                03ae
+subprogram rom|init_memory                         03ca
+subprogram rom|copy_memory                         042a
+subprogram rom|clear_memory                        0436
+subprogram rom|init_control_registers              0442
+subprogram rom|default_handler                     046a
+subprogram rom|NMI_dispatch                        046c
+subprogram rom|IRQ0_dispatch                       0478
+subprogram rom|IRQ1_dispatch                       0484
+subprogram rom|IRQ2_dispatch                       0490
+subprogram rom|IC1A_dispatch                       049c
+subprogram rom|IC1B_dispatch                       04a8
+subprogram rom|IC1C_dispatch                       04b4
+subprogram rom|IC1D_dispatch                       04c0
+subprogram rom|OC1A_dispatch                       04cc
+subprogram rom|OC1B_dispatch                       04d8
+subprogram rom|FOV1_dispatch                       04e4
+subprogram rom|CMI0A_dispatch                      04f0
+subprogram rom|CMI0B_dispatch                      04fc
+subprogram rom|OVI0_dispatch                       0508
+subprogram rom|CMI1A_dispatch                      0514
+subprogram rom|CMI1B_dispatch                      0520
+subprogram rom|OVI1_dispatch                       052c
+subprogram rom|ERI_dispatch                        0538
+subprogram rom|RXI_dispatch                        0544
+subprogram rom|TXI_dispatch                        0550
+subprogram rom|TEI_dispatch                        055c
+subprogram rom|AD_dispatch                         0568
+subprogram rom|WOVF_dispatch                       0574
+subprogram rom|rom_main                            0580
+subprogram rom|rom_init_handlers                   0688
+subprogram rom|rom_update                          070c
+subprogram rom|rom_shutdown_handlers               0d18
+subprogram rom|rom_power_off                       0d3c
+subprogram rom|rom_init_program_data               0d44
+subprogram rom|rom_program_update                  0d8c
+subprogram rom|rom_program_stop                    1446
+subprogram rom|do_nothing_148a                     148a
+subprogram rom|init_sensors                        1498
+subprogram rom|read_sensor                         14c0
+subprogram rom|set_sensor_active                   1946
+subprogram rom|set_sensor_passive                  19c4
+subprogram rom|do_nothing_1a1e                     1a1e
+subprogram rom|shutdown_sensors                    1a22
+subprogram rom|init_motors                         1a4a
+subprogram rom|control_motor                       1a4e
+subprogram rom|do_nothing_1ab0                     1ab0
+subprogram rom|shutdown_motors                     1ab4
+subprogram rom|IRQ0_handler                        1ab8
+subprogram rom|init_buttons                        1aba
+subprogram rom|play_view_button_sound              1b32
+subprogram rom|set_lcd_segment                     1b62
+subprogram rom|clear_lcd_segment                   1e4a
+subprogram rom|read_buttons                        1fb6
+subprogram rom|set_lcd_number                      1ff2
+subprogram rom|clear_display                       27ac
+subprogram rom|refresh_display                     27c8
+subprogram rom|do_nothing_27f0                     27f0
+subprogram rom|shutdown_buttons                    27f4
+subprogram rom|write_lcd_outputs                   283c
+subprogram rom|IRQ1_handler                        294a
+subprogram rom|init_power                          2964
+subprogram rom|play_system_sound                   299a
+subprogram rom|get_power_status                    29f2
+subprogram rom|set_on_off_key_output_low           2a32
+subprogram rom|set_on_off_key_output_high          2a48
+subprogram rom|do_nothing_2a5e                     2a5e
+subprogram rom|shutdown_power                      2a62
+subprogram rom|TEI_handler                         2a84
+subprogram rom|TXI_handler                         2a9c
+subprogram rom|RXI_handler                         2c10
+subprogram rom|ERI_handler                         30a4
+subprogram rom|init_serial                         30d0
+subprogram rom|set_range_long                      3250
+subprogram rom|set_range_short                     3266
+subprogram rom|play_sound_or_set_data_pointer      327c
+subprogram rom|reset_minute_timer                  339a
+subprogram rom|receive_data                        33b0
+subprogram rom|check_for_data                      3426
+subprogram rom|send_data                           343e
+subprogram rom|shutdown_serial                     3636
+subprogram rom|init_port_6_bit_3                   3692
+subprogram rom|do_nothing_36a6                     36a6
+subprogram rom|shutdown_port_6_bit_3               36aa
+subprogram rom|OCIA_handler                        36ba
+subprogram rom|AD_handler                          3b74
+subprogram rom|init_timer                          3b9a
+subprogram rom|get_sound_playing_flag              3ccc
+subprogram rom|control_motor_2                     3ce6
+subprogram rom|control_output                      3de0
+subprogram rom|clear_sensor_and_timer_data         3e9e
+subprogram rom|do_nothing_3ed0                     3ed0
+subprogram rom|shutdown_timer                      3ed4

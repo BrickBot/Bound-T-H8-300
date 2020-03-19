@@ -1,0 +1,9 @@
+<option option="uu">
+Specifies which registers can be changed (trashed)
+by a callee. Use the same option as for the compiler.
+
+For historical reasons, this option can also be written
+without an equal sign, for example 
+<option-ref option="uu1"/>
+instead of <option-value-ref option="uu" value="1"/>.
+</option>

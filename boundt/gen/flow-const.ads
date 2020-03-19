@@ -1,0 +1,381 @@
+-- Flow.Const (decl)
+--
+-- Constant propagation in a a flow-graph associated with a computation
+-- model that attaches definitions and uses of cells to flow steps and
+-- arithmetic preconditions to flow edges. The result is a new computation
+-- model given by a partially evaluated set of arithmetic definitions and
+-- preconditions mapped to the flow graph, useful for further analysis
+-- of e.g. loop bounds or remaining dynamic accesses.
+--
+-- This process has three main purposes:
+--
+-- > To evaluate operations that cannot be exactly mapped into
+--   Presburger arithmetic, for example bit-wise logical "and"
+--   and "or" and multiplication or division between what appear
+--   to be variable cells, but where the operands actually must
+--   have constant values.
+--
+-- > To evaluate operations that generate static addresses for
+--   dynamic memory references, for example by assembling the
+--   low and high order bits of the address into one register.
+--   For some architectures (e.g. the Intel 8051) this may give
+--   a major reduction in the effort to resolve dynamic references.
+--   For other architectures (e.g. the SPARC/ERC32) this is the
+--   only way in which some apparently dynamic references can be
+--   resolved to static cells.
+--
+-- > To evaluate operations that generate and use addresses for
+--   references to stack data, where the address is computed as
+--   the sum of the address of the stack frame and a constant
+--   offset (or an expression that evaluates to a constant).
+--   This evaluation depends on initial-value cells defined to
+--   hold the initial values of stack pointers, on entry to the
+--   subprogram under analysis. The analysis is not limited to
+--   stacks, but can work for any such base + offset references,
+--   when the processor-specific boundable-reference types do
+--   the relevant checks.
+--
+-- The process can also compute the maximum local stack usage and
+-- the "take-off" stack-level for calls, if these are defined by
+-- constants and computations on constants. Likewise, the process
+-- compute the net stacking effect (equivalent to the final local
+-- stack height) and can resolve dynamic references to stack data
+-- (locals or parameters) where the reference depends on the local
+-- stack height.
+--
+-- In the new computation model, the step effects (assignments)
+-- and the edge preconditions can be partially evaluated and
+-- modified in the following ways:
+--
+-- > An operand can be replaced by a constant (literal), if
+--   this literal is the only possible value for the operand.
+--
+-- > An expression or sub-expression can be replaced by a
+--   constant if the operands of the sub-expression become
+--   constrained so much that the result of the expression is
+--   completely defined.
+--
+-- > A conditional assignment can be replaced by an unconditional
+--   assignment if the condition can be evaluated to a constant.
+--
+-- > An assignment can be deleted entirely, if it is simplified
+--   into an identity assignment (cell := cell).
+--
+-- > A dynamic memory access can be replaced by a static cell
+--   name if the propagated constant values imply that only this
+--   cell can be accessed (under the new computation model). This
+--   can occur at a cell use (dynamic memory access as operand)
+--   or in a cell definition (dynamic memory access as assignment
+--   target). This can lead to an iteration of the constant
+--   propagation when new data-flow connections (from def to use)
+--   arise. The resolved static cell name can be a really static
+--   cell (fixed memory address) or can be accessed by a constant
+--   offset to some relevant initial-value cell such as the start
+--   of a stack frame.
+--
+-- > An edge precondition can be replaced by a constant True
+--   (Arithmetic.Always) or False (Arithmetic.Never) if the
+--   condition can be evaluated to a constant. If the precondition
+--   becomes False, the edge is marked as "infeasible" in the model
+--   and the infeasibility is propagated over the model. For example,
+--   if the only edge to a sub-graph becomes infeasible then the
+--   whole sub-graph becomes infeasible.
+--
+-- > The input and output cells (and thus the effect) of a call-step
+--   can be refined if the calling protocol is dynamic and the
+--   constant bounds refine it. This can introduce new static target
+--   cells in the computation.
+--
+-- This analysis considers cyclic paths, i.e. loops, with the same
+-- precision as other paths, so in some cases it may be more powerful
+-- than the later Omega analysis in which the values of loop-variant
+-- cells are crudely approximated (considered unknown on repeat edges).
+--
+-- The analysis considers only those parts of the original Model that
+-- the Model considers feasible. For example, infeasible edges are
+-- not considered to propagate any values. As already said, the
+-- analysis may show that more parts of the original Model are
+-- infeasible in the new Model.
+--
+-- The analysis assumes that the output cells and output alias
+-- sets of all callees are known and the effect of the call is given
+-- in the effect of the calle-step.
+--
+-- Computations involving volatile cells are analysed as follows:
+--
+-- > Uses (reads) of volatile cells are processed in the same way as
+--   uses of normal cells.
+--
+-- > Assignments (writes) to volatile cells are ignored. They are
+--   not used to update the abstract value of the cell during the
+--   analysis, and are neither evaluated nor refined.
+--
+-- The effect is that a volatile cell appears to retain the value
+-- it had on entry to the subprogram. Since volatile cells are
+-- never passed in as parameters, this value is opaque, unless it
+-- is defined by an assertion that covers the entry point.
+--
+-- When the flow-graph contains boundable dynamic edges (dynamic flow
+-- transitions), this process applies the propagated constant values as
+-- "bounds" to try to resolve the dynamic edges into edges with known
+-- target addresses. This extends the flow-graph and probably leaves it
+-- incomplete because the new edges are probably "loose" edges where
+-- the target steps do not yet exist in the graph.
+--
+-- The new computation model is valid only for the given control-
+-- flow graph. If the flow-graph contains unresolved dynamic flow,
+-- which is here or later resolved to add edges that create more
+-- paths from some (new or existing) value assignments to existing
+-- value uses, the constants and simplified expressions computed
+-- from the first version of the flow-graph remain _possible_ values
+-- in the extended flow-graph but do not necessarily contain _all_
+-- the possible values. The computation model derived for the first
+-- version of the flow-graph should be discarded, and constant
+-- propagation should be applied again to the extended flow-graph,
+-- starting from the "primitive" computation model for the extended
+-- flow-graph. However, the extended flow-graph must first be traced
+-- out by decoding the target instructions of the new loose edges into
+-- the corresponding steps and further new edges, until there are no
+-- more loose edges in the graph.
+--
+-- On the other hand, the constant propagation process may refine some
+-- edge conditions to be False, which means that these edges are
+-- infeasible under the refined Model. As the final step in the process,
+-- such infeasible edges are found and the implications are propagated
+-- around the flow-graph. The refined Model may thus have less feasible
+-- parts that the original Model.
+--
+-- In addition to the constant definitions embedded in the flow-graph
+-- itself, the analysis can be given more constants and constraints by:
+--
+-- > Values for the the inputs cells (parameters, globals) to the
+--   flow-graph, valid on entry to the flow-graph.
+--
+-- > Bounds on cell values that are valid throughout the flow-graph.
+--
+-- > TBA: Bounds on cell values in specific parts of the flow-graph or
+--   at specific points in the flow-graph (as definable in assertions),
+--   for example:
+--   - Calls
+--   - Loops
+--   - etc.
+--
+-- In addition to the new computation model, the analysis can produce
+-- knowledge about the stack height, for each stack in the processor:
+--
+-- > The maximum local stack height at any step in the subprogram
+--   may be found.
+--
+-- > The actual local stack height at any call in the subprogram
+--   may be found. This is the "take-off" height for the call.
+--
+-- As for the new computation model, the stack-height knowledge is
+-- valid only for the original flow-graph, not for a graph that is
+-- extended by resolved dynamic flow.
+--
+-- A component of the Bound-T Worst-Case Execution Time Tool.
+--
+-------------------------------------------------------------------------------
+-- Copyright (c) 1999 .. 2015 Tidorum Ltd
+-- All rights reserved.
+--
+-- Redistribution and use in source and binary forms, with or without
+-- modification, are permitted provided that the following conditions are met:
+--
+-- 1. Redistributions of source code must retain the above copyright notice, this
+--    list of conditions and the following disclaimer.
+-- 2. Redistributions in binary form must reproduce the above copyright notice,
+--    this list of conditions and the following disclaimer in the documentation
+--    and/or other materials provided with the distribution.
+--
+-- This software is provided by the copyright holders and contributors "as is" and
+-- any express or implied warranties, including, but not limited to, the implied
+-- warranties of merchantability and fitness for a particular purpose are
+-- disclaimed. In no event shall the copyright owner or contributors be liable for
+-- any direct, indirect, incidental, special, exemplary, or consequential damages
+-- (including, but not limited to, procurement of substitute goods or services;
+-- loss of use, data, or profits; or business interruption) however caused and
+-- on any theory of liability, whether in contract, strict liability, or tort
+-- (including negligence or otherwise) arising in any way out of the use of this
+-- software, even if advised of the possibility of such damage.
+--
+-- Other modules (files) of this software composition should contain their
+-- own copyright statements, which may have different copyright and usage
+-- conditions. The above conditions apply to this file.
+-------------------------------------------------------------------------------
+--
+-- $Revision: 1.9 $
+-- $Date: 2015/10/24 19:36:48 $
+--
+-- $Log: flow-const.ads,v $
+-- Revision 1.9  2015/10/24 19:36:48  niklas
+-- Moved to free licence.
+--
+-- Revision 1.8  2013-02-12 08:47:19  niklas
+-- BT-CH-0245: Global volatile cells and "volatile" assertions.
+--
+-- Revision 1.7  2008-06-18 20:52:56  niklas
+-- BT-CH-0130: Data pointers relative to initial-value cells.
+--
+-- Revision 1.6  2007/08/17 14:44:00  niklas
+-- BT-CH-0074: Stable and Unstable stacks.
+--
+-- Revision 1.5  2007/03/18 12:50:38  niklas
+-- BT-CH-0050.
+--
+-- Revision 1.4  2007/01/13 13:51:04  niklas
+-- BT-CH-0041.
+--
+-- Revision 1.3  2005/02/23 09:05:18  niklas
+-- BT-CH-0005.
+--
+-- Revision 1.2  2005/02/16 21:11:43  niklas
+-- BT-CH-0002.
+--
+-- Revision 1.1  2004/04/28 18:54:41  niklas
+-- First version.
+--
+
+
+with Programs;
+with Programs.Execution;
+with Storage;
+with Storage.Bounds;
+
+
+package Flow.Const is
+
+
+   procedure Propagate (
+      Subprogram : in Programs.Subprogram_T;
+      Asserted   : in Storage.Bounds.Var_Interval_List_T;
+      Bounds     : in Programs.Execution.Bounds_Ref);
+   --
+   -- Propagates constant values in the control-flow graph of the
+   -- given Subprogram, based on an original computation model in
+   -- the execution Bounds of the Subprogram, creating a simplified
+   -- (partially evaluated) model, and updates the execution Bounds
+   -- of the Subprogram.
+   --
+   -- Subprogram
+   --    The subprogram that is analysed.
+   --
+   -- Asserted
+   --    Asserted bounds for some variables, valid always.
+   --
+   -- Bounds
+   --    Execution bounds being built for the Subprogram. The following
+   --    part of the Bounds are used:
+   --
+   --    > Initial bounds for cells, valid on entry to the Subprogram.
+   --
+   --    > The computation model. The effect of any calls from the
+   --      Subprogram is assumed to be represented in the effect of
+   --      the call-steps under the model. We also assume that the
+   --      computation model is "clean" on entry.
+   --
+   --    The following parts of the Bounds may be updated:
+   --
+   --    >  The computation model will be refined/simplified by the
+   --       constant-propagation process (using copy-on-change).
+   --       The following parts of the model may be updated:
+   --
+   --       o  The expressions within the effects of ordinary steps.
+   --          Conditional assignments become unconditional if the
+   --          condition is refined to False or True.
+   --
+   --       o  Dynamic memory references in expressions and in the
+   --          targets of assignments.
+   --
+   --       o  Conditions on flow-graph edges, which may extend the
+   --          parts of the Model that are known to be infeasible.
+   --
+   --       o  Dynamic protocols for calls.
+   --
+   --       o  The effects of call-steps, which are updated if any
+   --          of the above changes happen.
+   --
+   --    > Call_Input_Bounds: The bounds on input cells and protocol
+   --      basis cells for each call from the Subprogram.
+   --
+   --    > Stack_Height: The maximum local stack-height in the Subprogram
+   --      for all stacks. Includes the final stack height, see below.
+   --
+   --    > Take_Off_Height: The local stack-height at each call from
+   --      the Subprogram and for all stacks.
+   --
+   --    > Final_Stack_Height: The final local stack height in the
+   --      subprogram. Equivalent to the net (overall) change in the
+   --      stack-height in one execution of the subprogram, from entry
+   --      to return. If non-zero, a call of this subprogram changes the
+   --      local stack height in the caller by this amount. For Stable
+   --      stacks it is zero by definition, so here we try to compute
+   --      it only for the Unstable stacks (if any).
+   --
+   --
+   -- This operation can be applied to a subprogram with a flow-graph
+   -- that has no loose edges. The flow-graph should also have a node
+   -- (basic block) structure, although this structure is used only to
+   -- handle edges that turn out to be infeasible: if the edge in
+   -- question is internal to a node, rather than an edge between nodes,
+   -- a warning is issued that the node is split by an infeasible edge.
+   -- Certain kinds of switch/case statements could give rise to such
+   -- splits.
+   --
+   -- If some parts of the flow-graph become infeasible, the new
+   -- computation model has also been "pruned" (see Flow.Pruning) to
+   -- find all the infeasible parts and flag them as infeasible.
+   --
+   -- For each call from the Subprogram:
+   --
+   -- > If the calling protocol is dynamic, and some of the protocol's
+   --   basis cells have constant values, these constant values are
+   --   applied as bounds upon the protocol. If this gives a new, more
+   --   bounded protocol, the new protocol is entered in the model.
+   --
+   -- > The constant-valued cells on entry to the call step are used to
+   --   create a bounds object of type Storage.Bounds.Singular_Bounds_T
+   --   which is then stored in the Bounds.
+   --
+   -- > If a stack-height cell has a constant value on entry to the
+   --   call-step this value used to bound the take-off-height for the
+   --   call in the Bounds.
+   --
+   -- We assume that the subprogram uses each stack in the following way:
+   --
+   -- > The local stack height on entry to the subprogram is taken from
+   --   the Initial constraints recorded in Bounds.
+   --
+   -- > The stack-height needed by and within a step is the maximum
+   --   of the stack-heights on reaching the step and on leaving the
+   --   step. In other words, no step allocates and then releases
+   --   stack-space "internally". Of course, we still allow callee
+   --   subprograms to allocate and release stack, but this stack
+   --   usage is accounted in the callees and is not at issue here.
+   --
+   -- > A return step may decrease or increase the stack height or
+   --   leave it unchanged.
+   --
+   -- If the stack-height cell for a stack is not accessed in this
+   -- subprogram, the stack-height is taken from Initial constraints
+   -- or (in case a single value is not defined there) from
+   -- Programs.Initial_Stack_Height.
+   --
+   -- No stack analysis is performed if the program has no stacks.
+   -- In this case, the local stack-height bounds, take-off height
+   -- bounds and net-stacking bounds in Bounds are not changed.
+   --
+   -- If the flow-graph contains dynamic control flow (boundable
+   -- dynamic edges), the procedure attempts to resolve the dynamic
+   -- flow by applying the propagated constant values as bounds.
+   -- If successful, edges will be added to the flow-graph and the
+   -- function Flow.State will return Growing. In this case, the
+   -- new model and all new bounds stored in the Bounds will be out
+   -- of date because they are valid only for the original flow-graph,
+   -- not for the extended graph. Indeed, the whole Bounds object will
+   -- be out of date because the when extended flow-graph is traced
+   -- out it may have new loops and new calls, requiring the creation
+   -- of a new bounds object with space for them.
+
+
+end Flow.Const;

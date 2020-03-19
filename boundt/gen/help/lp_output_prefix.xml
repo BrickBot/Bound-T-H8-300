@@ -1,0 +1,6 @@
+<option option="lp_output_prefix">
+The initial part (prefix) of the names of the files that will hold the
+output from the lp_solve program (thanks to the option
+<option-ref option="keep_files"/> or <option-ref option="keep_lp"/>).
+The rest of the file name will be a sequential number.
+</option>
