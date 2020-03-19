@@ -8,6 +8,10 @@ usage of embedded programs.
 This repository contains the source code for the Bound-T static
 analysis tool, version 4b, for the target processor h8-300.
 
+Original Project Website – http://www.bound-t.com/
+
+Renesas H8/300 Specifics – http://www.bound-t.com/targets/h8-300/
+
 This top-level folder contains the following sub-folders:
 
 - boundt, the source code of Bound-T itself
@@ -60,10 +64,6 @@ linked and can therefore be executed on hosts where GNAT is not
 installed. On some host systems these two executables are
 essentially identical, and the ".static" form may not exist.
 
-This folder does not contain the source code for the support tools
-"oc" and "lp_solve", which Bound-T uses for parts of its analysis.
-Look for a file called "src-support.zip" in the same place where
-you found this file.
 
 If you have any problems building Bound-T, feel free to ask for help
-by e-mail to info@tidorum.fi.
+by e-mail to info [at] tidorum.fi.
